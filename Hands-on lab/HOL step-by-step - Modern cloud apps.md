@@ -1,3 +1,4 @@
+<!--
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
@@ -23,77 +24,6 @@ The names of manufacturers, products, or URLs are provided for informational pur
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
-
-<!-- TOC -->
-- [Modern cloud apps hands-on lab step-by-step](#modern-cloud-apps-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
-  - [Help references](#help-references)
-  - [Exercise 1: Proof of concept deployment](#exercise-1-proof-of-concept-deployment)
-    - [Task 1: Deploy the e-commerce website, SQL Database, and storage](#task-1-deploy-the-e-commerce-website-sql-database-and-storage)
-      - [Subtask 1: Configure SQL Database Firewall and Retrieve Connection String](#subtask-1-configure-sql-database-firewall-and-retrieve-connection-string)
-      - [Subtask 2: Retrieve Storage Account Access Keys](#subtask-2-Retrieve-Storage-Account-Access-Keys)
-      - [Subtask 3: Retrieve Service Bus Queue Connection String](#subtask-3-retrieve-service-bus-queue-connection-string)
-      - [Subtask 4: Update the configuration in the starter project](#subtask-4-update-the-configuration-in-the-starter-project)
-      - [Subtask 5: Deploy the e-commerce Web App from Visual Studio](#subtask-5-deploy-the-e-commerce-web-app-from-visual-studio)
-    - [Task 2: Setup SQL Database Geo-Replication](#task-2-setup-sql-database-geo-replication)
-      - [Subtask 1: Add secondary database](#subtask-1-add-secondary-database)
-      - [Subtask 2: Setup SQL Failover Group](#subtask-2-setup-sql-failover-group)
-      - [Subtask 3: Failover SQL Database Failover Group](#subtask-3-failover-sql-database-failover-group)
-      - [Subtask 4: Test e-commerce Web App after Failover](#subtask-4-test-e-commerce-web-app-after-failover)
-    - [Task 3: Deploying the Call Center admin website](#task-3-deploying-the-call-center-admin-website)
-      - [Subtask 1: Provision the call center admin Web App](#subtask-1-provision-the-call-center-admin-web-app)
-      - [Subtask 2: Update the configuration in the starter project](#subtask-2-update-the-configuration-in-the-starter-project)
-      - [Subtask 3: Deploy the call center admin Web App from Visual Studio](#subtask-3-deploy-the-call-center-admin-web-app-from-visual-studio)
-    - [Task 4: Deploying the payment gateway](#task-4-deploying-the-payment-gateway)
-      - [Subtask 1: Provision the payment gateway API app](#subtask-1-provision-the-payment-gateway-api-app)
-      - [Subtask 2: Deploy the Contoso.Apps.PaymentGateway project in Visual Studio](#subtask-2-deploy-the-contosoappspaymentgateway-project-in-visual-studio)
-    - [Task 5: Deploying the Offers Web API](#task-5-deploying-the-offers-web-api)
-      - [Subtask 1: Provision the Offers Web API app](#subtask-1-provision-the-offers-web-api-app)
-      - [Subtask 2: Configure Cross-Origin Resource Sharing (CORS)](#subtask-2-configure-cross-origin-resource-sharing-cors)
-      - [Subtask 3: Update the configuration in the starter project](#subtask-3-update-the-configuration-in-the-starter-project-1)
-      - [Subtask 4: Deploy the Contoso.Apps.SportsLeague.Offers project in Visual Studio](#subtask-4-deploy-the-contosoappssportsleagueoffers-project-in-visual-studio)
-    - [Task 6: Update and deploy the e-commerce website](#task-6-update-and-deploy-the-e-commerce-website)
-      - [Subtask 1: Update the Application Settings for the Web App that hosts the Contoso.Apps.SportsLeague.Web project](#subtask-1-update-the-application-settings-for-the-web-app-that-hosts-the-contosoappssportsleagueweb-project)
-      - [Subtask 2: Validate App Settings are correct](#subtask-2-validate-app-settings-are-correct)
-  - [Exercise 2: Identity and Security](#exercise-2-identity-and-security)
-    - [Task 1: Enable Azure AD Premium Trial](#task-1-enable-azure-ad-premium-trial)
-    - [Task 2: Create a new Contoso user](#task-2-create-a-new-contoso-user)
-    - [Task 3: Configure access control for the call center administration Web Application](#task-3-configure-access-control-for-the-call-center-administration-web-application)
-      - [Subtask 1: Enable Azure AD Authentication](#subtask-1-enable-azure-ad-authentication)
-      - [Subtask 2: Verify the call center administration website uses the access control logon](#subtask-2-verify-the-call-center-administration-website-uses-the-access-control-logon)
-    - [Task 4: Apply custom branding for the Azure Active Directory logon page](#task-4-apply-custom-branding-for-the-azure-active-directory-logon-page)
-    - [Task 5: Verify the branding has been successfully applied to the Azure Active Directory logon page](#task-5-verify-the-branding-has-been-successfully-applied-to-the-azure-active-directory-logon-page)
-  - [Exercise 3: Enable Azure B2C for customer site](#exercise-3-enable-azure-b2c-for-customer-site)
-    - [Task 1: Create a new directory](#task-1-create-a-new-directory)
-    - [Task 2: Add a new application](#task-2-add-a-new-application)
-    - [Task 3: Create Policies, Sign up and sign in](#task-3-create-policies-sign-up-and-sign-in)
-    - [Task 4: Create a profile editing policy](#task-4-create-a-profile-editing-policy)
-    - [Task 5: Create a password reset policy](#task-5-create-a-password-reset-policy)
-    - [Task 6: Modify the Contoso.App.SportsLeague.Web](#task-6-modify-the-contosoappsportsleagueweb)
-    - [Task 7: Send authentication requests to Azure AD](#task-7-send-authentication-requests-to-azure-ad)
-    - [Task 8: Display user information](#task-8-display-user-information)
-    - [Task 9: Run the sample app](#task-9-run-the-sample-app)
-  - [Exercise 4: Enabling Telemetry with Application Insights](#exercise-4-enabling-telemetry-with-application-insights)
-    - [Task 1: Configure the application for telemetry](#task-1-configure-the-application-for-telemetry)
-      - [Subtask 1: Add Application Insights Telemetry to the e-commerce website project](#subtask-1-add-application-insights-telemetry-to-the-e-commerce-website-project)
-      - [Subtask 2: Enable client side telemetry](#subtask-2-enable-client-side-telemetry)
-      - [Subtask 3: Deploy the e-commerce Web App from Visual Studio](#subtask-3-deploy-the-e-commerce-web-app-from-visual-studio)
-    - [Task 2: Creating the web performance test and load test](#task-2-creating-the-web-performance-test-and-load-test)
-      - [Subtask 1: Create the load test](#subtask-1-create-the-load-test)
-      - [Subtask 2: View the Application Insights logs](#subtask-2-view-the-application-insights-logs)
-  - [Exercise 5: Automating backend processes with Azure Functions and Logic Apps](#exercise-5-automating-backend-processes-with-azure-functions-and-logic-apps)
-    - [Task 1: Create an Azure Function to Generate PDF Receipts](#task-1-create-an-azure-function-to-generate-pdf-receipts)
-    - [Task 2: Create an Azure Logic App to Process Orders](#task-2-create-an-azure-logic-app-to-process-orders)
-    - [Task 3: Use Twilio to send SMS Order Notifications](#task-3-use-twilio-to-send-sms-order-notifications)
-      - [Subtask 1: Configure your Twilio trial account](#subtask-1-configure-your-twilio-trial-account)
-      - [Subtask 2: Create a new logic app](#subtask-2-create-a-new-logic-app)
-  - [After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Delete resources](#task-1-delete-resources)
-
-<!-- /TOC -->
 
 # Modern cloud apps hands-on lab step-by-step
 
@@ -147,6 +77,156 @@ The Cloud Workshop: Modern Cloud Apps lab is a hands-on exercise that will chall
 | Azure Functions -- create first function | <https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function> |
 | Azure Functions docs | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-azure-functions> |
 
+-->
+![Microsoft Cloud Workshop](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshop")
+
+<div class="MCWHeader1">
+最新のクラウド アプリ
+</div>
+
+<div class="MCWHeader2">
+ステップバイステップ式ハンズオン ラボ
+</div>
+
+<div class="MCWHeader3">
+2020 年 3 月
+</div>
+
+このドキュメントに記載されている情報 (URL や他のインターネット Web サイト参照を含む) は、将来予告なしに変更することがあります。別途記載されていない場合、このソフトウェアおよび関連するドキュメントで使用している会社、組織、製品、ドメイン名、電子メール アドレス、ロゴ、人物、場所、出来事などの名称は架空のものです。実在する商品名、団体名、個人名などとは一切関係ありません。お客様ご自身の責任において、適用されるすべての著作権関連法規に従ったご使用をお願いいたします。著作権法による制限に関係なく、マイクロソフトの書面による許可なしに、このドキュメントの一部または全部を複製したり、検索システムに保存または登録したり、別の形式に変換したりすることは、手段、目的を問わず禁じられています。ここでいう手段とは、複写や記録など、電子的、または物理的なすべての手段を含みます。
+
+マイクロソフトは、このドキュメントに記載されている内容に関し、特許、特許申請、商標、著作権、またはその他の無体財産権を有する場合があります。別途マイクロソフトのライセンス契約上に明示の規定のない限り、このドキュメントはこれらの特許、商標、著作権、またはその他の知的財産権に関する権利をお客様に許諾するものではありません。
+
+製造元名、製品名、URL は、情報提供のみを目的としており、これらの製造元またはマイクロソフトのテクノロジを搭載した製品の使用について、マイクロソフトは、明示的、黙示的、または法令によるいかなる表明も保証もいたしません。製造元または製品に対する言及は、マイクロソフトが当該製造元または製品を推奨していることを示唆するものではありません。掲載されているリンクは、外部サイトへのものである場合があります。これらのサイトはマイクロソフトの管理下にあるものではなく、リンク先のサイトのコンテンツ、リンク先のサイトに含まれているリンク、または当該サイトの変更や更新について、マイクロソフトは一切責任を負いません。リンク先のサイトから受信した Web キャストまたはその他の形式での通信について、マイクロソフトは責任を負いません。マイクロソフトは受講者の便宜を図る目的でのみ、これらのリンクを提供します。また、リンクの掲載は、マイクロソフトが当該サイトまたは当該サイトに掲載されている製品を推奨していることを示唆するものではありません。
+
+© 2019 Microsoft Corporation. All rights reserved.
+
+Microsoft および <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> (英語) に掲載されているその他の商標は、マイクロソフト グループ各社の商標です。その他すべての商標は、その所有者に帰属します。
+
+**目次**
+
+<!-- TOC -->
+- [最新のクラウド アプリ ステップバイステップ式ハンズオン ラボ](#最新のクラウド-アプリ-ステップバイステップ式ハンズオン-ラボ)
+  - [要約と学習目標](#要約と学習目標)
+  - [概要](#概要)
+  - [ソリューションのアーキテクチャ](#ソリューションのアーキテクチャ)
+  - [前提条件](#前提条件)
+  - [関連ヘルプ記事](#関連ヘルプ記事)
+  - [演習 1: 概念実証版のデプロイ](#演習-1:-概念実証版のデプロイ)
+    - [タスク 1: eコマースの Web サイト、SQL Database、ストレージをデプロイする](#タスク-1:-eコマースの-Web-サイト、SQL-Database、ストレージをデプロイする)
+      - [サブタスク 1: SQL Database のファイアウォールを構成し接続文字列を取得する](#サブタスク-1:-SQL-Database-のファイアウォールを構成し接続文字列を取得する)
+      - [サブタスク 2: ストレージ アカウントのアクセス キーを取得する](#サブタスク-2:-ストレージ-アカウントのアクセス-キーを取得する)
+      - [サブタスク 3: Service Bus キューの接続文字列を取得する](#サブタスク-3:-Service-Bus-キューの接続文字列を取得する)
+      - [サブタスク 4: スターター プロジェクトの構成を更新する](#サブタスク-4:--スターター-プロジェクトの構成を更新する)
+      - [サブタスク 5: Visual Studio から eコマース Web アプリをデプロイする](#サブタスク-5:-Visual-Studio-から-eコマース-Web-アプリをデプロイする)
+    - [タスク 2: SQL Database の geo レプリケーションをセットアップする](#タスク-2:-SQL-Database-の-geo-レプリケーションをセットアップする)
+      - [サブタスク 1: セカンダリ データベースを追加する](#サブタスク-1:-セカンダリ-データベースを追加する)
+      - [サブタスク 2: SQL フェールオーバー グループをセットアップする](#サブタスク-2:-SQL-フェールオーバー-グループをセットアップする)
+      - [サブタスク 3: SQL Database フェールオーバー グループのフェールオーバーを実行する](#サブタスク-3:-SQL-Database-フェールオーバー-グループのフェールオーバーを実行する)
+      - [サブタスク 4: フェールオーバー後に eコマース Web アプリをテストする](#サブタスク-4:-フェールオーバー後に-eコマース-Web-アプリをテストする)
+    - [タスク 3: コール センター管理 Web サイトをデプロイする](#タスク-3:-コール-センター管理-Web-サイトをデプロイする)
+      - [サブタスク 1: コール センター管理 Web アプリをプロビジョニングする](#サブタスク-1:-コール-センター管理-Web-アプリをプロビジョニングする)
+      - [サブタスク 2: スターター プロジェクトの構成を更新する](#サブタスク-2:-スターター-プロジェクトの構成を更新する)
+      - [サブタスク 3: Visual Studio からコール センター管理 Web アプリをデプロイする](#サブタスク-3:-Visual-Studio-からコール-センター管理-Web-アプリをデプロイする)
+    - [タスク 4: 支払いゲートウェイをデプロイする](#タスク-4:-支払いゲートウェイをデプロイする)
+      - [サブタスク 1: 支払いゲートウェイ API アプリをプロビジョニングする](#サブタスク-1:-支払いゲートウェイ-API-アプリをプロビジョニングする)
+      - [サブタスク 2: Visual Studio から Contoso.Apps.PaymentGateway プロジェクトをデプロイする](#サブタスク-2:-Visual-Studio-から-Contoso.Apps.PaymentGateway-プロジェクトをデプロイする)
+    - [タスク 5: Offers Web API をデプロイする](#タスク-5:-Offers-Web-API-をデプロイする)
+      - [サブタスク 1: Offers Web API アプリをプロビジョニングする](#サブタスク-1:-Offers-Web-API-アプリをプロビジョニングする)
+      - [サブタスク 2: クロス オリジン リソース共有 (CORS) を構成する](#サブタスク-2:-クロス-オリジン-リソース共有-(CORS)-を構成する)
+      - [サブタスク 3: スターター プロジェクトの構成を更新する](#サブタスク-3:-スターター-プロジェクトの構成を更新する)
+      - [サブタスク 4: Visual Studio から Contoso.Apps.SportsLeague.Offers プロジェクトをデプロイする](#サブタスク-4:-Visual-Studio-から-Contoso.Apps.SportsLeague.Offers-プロジェクトをデプロイする)
+    - [タスク 6: eコマース Web サイトを更新してデプロイする](#タスク-6:-eコマース-Web-サイトを更新してデプロイする)
+      - [サブタスク 1: Contoso.Apps.SportsLeague.Web プロジェクトをホストする Web アプリケーションの設定を更新する](#サブタスク-1:-Contoso.Apps.SportsLeague.Web-プロジェクトをホストする-Web-アプリケーションの設定を更新する)
+      - [サブタスク 2: アプリケーション設定が適切であることを検証する](#サブタスク-2:-アプリケーション設定が適切であることを検証する)
+  - [演習 2: ID とセキュリティ](#演習-2:-ID-とセキュリティ)
+    - [タスク 1: Azure AD Premium 試用版を有効化する](#タスク-1:-Azure-AD-Premium-試用版を有効化する)
+    - [タスク 2: Contoso ユーザーを新規作成する](#タスク-2:-Contoso-ユーザーを新規作成する)
+    - [タスク 3: コール センター管理 Web アプリケーションのアクセス制御を構成する](#タスク-3:-コール-センター管理-Web-アプリケーションのアクセス制御を構成する)
+      - [サブタスク 1: Azure AD 認証を有効化する](#サブタスク-1:-Azure-AD-認証を有効化する)
+      - [サブタスク 2: コール センター管理 Web サイトへのログオンにアクセス制御が適用されていることを検証する](#サブタスク-2:-コール-センター管理-Web-サイトへのログオンにアクセス制御が適用されていることを検証する)
+    - [タスク 4: Azure Active Directory のログオン ページにカスタム ブランディングを適用する](#タスク-4:-Azure-Active-Directory-のログオン-ページにカスタム-ブランディングを適用する)
+    - [タスク 5: Azure Active Directory のログオン ページにブランディングが正常に適用されていることを検証する](#タスク-5:-Azure-Active-Directory-のログオン-ページにブランディングが正常に適用されていることを検証する)
+  - [演習 3: 顧客サイト用 Azure B2C を有効化する](#演習-3:-顧客サイト用-Azure-B2C-を有効化する)
+    - [タスク 1: ディレクトリを新規作成する](#タスク-1:-ディレクトリを新規作成する)
+    - [タスク 2: アプリケーションを新規作成する](#タスク-2:-アプリケーションを新規作成する)
+    - [タスク 3: サインアップとサインインのポリシーを作成する](#タスク-3:-サインアップとサインインのポリシーを作成する)
+    - [タスク 4: プロファイル編集ポリシーを作成する](#タスク-4:-プロファイル編集ポリシーを作成する)
+    - [タスク 5: パスワード リセット ポリシーを作成する](#タスク-5:-パスワード-リセット-ポリシーを作成する)
+    - [タスク 6: Contoso.App.SportsLeague.Web を変更する](#タスク-6:-Contoso.App.SportsLeague.Web-を変更する)
+    - [タスク 7: 認証要求を Azure AD に送信する](#タスク-7:-認証要求を-Azure-AD-に送信する)
+    - [タスク 8: ユーザー情報を表示する](#タスク-8:-ユーザー情報を表示する)
+    - [タスク 9: サンプル アプリを実行する](#タスク-9:-サンプル-アプリを実行する)
+  - [演習 4: Application Insights でテレメトリを有効化する](#演習-4:-Application-Insights-でテレメトリを有効化する)
+    - [タスク 1: アプリケーションでテレメトリを構成する](#タスク-1:-アプリケーションでテレメトリを構成する)
+      - [サブタスク 1: eコマース Web サイト プロジェクトに Application Insights Telemetry を追加する](#サブタスク-1:-eコマース-Web-サイト-プロジェクトに-Application-Insights-Telemetry-を追加する)
+      - [サブタスク 2: クライアント側のテレメトリを有効化する](#サブタスク-2:-クライアント側のテレメトリを有効化する)
+      - [サブタスク 3: Visual Studio から eコマース Web アプリをデプロイする](#サブタスク-3:-Visual-Studio-から-eコマース-Web-アプリをデプロイする)
+    - [タスク 2: Web のパフォーマンス テストと負荷テストを作成する](#タスク-2:-Web-のパフォーマンス-テストと負荷テストを作成する)
+      - [サブタスク 1: 負荷テストを作成する](#サブタスク-1:-負荷テストを作成する)
+      - [サブタスク 2: Application Insights のログを表示する](#サブタスク-2:-Application-Insights-のログを表示する)
+  - [演習 5: Azure Functions と Logic Apps でバックエンド処理を自動化する](#演習-5:-Azure-Functions-と-Logic-Apps-でバックエンド処理を自動化する)
+    - [タスク 1: PDF 形式の受領書を生成する Azure 関数を作成する](#タスク-1:-PDF-形式の受領書を生成する-Azure-関数を作成する)
+    - [タスク 2: 注文を処理する Azure Logic Apps を作成する](#タスク-2:-注文を処理する-Azure-Logic-Apps-を作成する)
+    - [タスク 3: Twilio を使用して SMS で注文通知を送信する](#タスク-3:-Twilio-を使用して-SMS-で注文通知を送信する)
+      - [サブタスク 1: Twilio の試用アカウントを構成する](#サブタスク-1:-Twilio-の試用アカウントを構成する)
+      - [サブタスク 2: 新しいロジック アプリを作成する](#サブタスク-2:-新しいロジック-アプリを作成する)
+  - [ハンズオン ラボ終了後の作業](#ハンズオン-ラボ終了後の作業)
+    - [タスク 1: リソースを削除する](#タスク-1:-リソースを削除する)
+
+<!-- /TOC -->
+
+# 最新のクラウド アプリ ステップバイステップ式ハンズオン ラボ<a name="最新のクラウド-アプリ-ステップバイステップ式ハンズオン-ラボ"></a>
+
+## 要約と学習目標<a name="要約と学習目標"></a>
+
+このハンズオン ラボでは、用意されたサンプルに従って、Azure App Service、Azure Functions、Azure SQL Database、Azure Logic Apps、および関連サービスを基盤とするエンドツーエンドのシナリオを実装します。具体的には、Microsoft Azure のさまざまなコンポーネントを使用してコンピューティング、ストレージ、ワークフロー、監視などを実装します。
+
+このハンズオン ラボでは、ホワイトボード設計セッションとは異なり PCI への準拠にはこだわりません。また、App Service Environment、Network Security Groups、Application Gateway などの高度なセキュリティ機能を使用します。ハンズオン ラボは 1 人でも実装できますが、実際の状況を想定し、他のメンバーと協力してソリューション全体の専門知識を全員で共有することを強くおすすめします。
+
+このハンズオン ラボを修了すると、主要な Azure サービスを複数使用して、元のソリューションの機能全般を改良すると共に、新規設計または改良されたソリューションの安全性とスケーラビリティを強化する方法を習得できます。
+
+## 概要<a name="概要"></a>
+
+Cloud Workshop: 最新のクラウド アプリ ラボは、用意されたサンプルに従って Microsoft Azure App Service および関連サービスを基盤とするエンドツーエンドのシナリオを実装する、ハンズオン形式の演習です。このシナリオでは、Microsoft Azure のさまざまなコンポーネントを使用してコンピューティング、ストレージ、セキュリティ、スケーリングなどを実装します。ラボは 1 人でも実装できますが、実際の状況を想定し、他のメンバーと緊密に協力してソリューション全体の専門知識を全員で共有することを強くおすすめします。
+
+## ソリューションのアーキテクチャ<a name="ソリューションのアーキテクチャ"></a>
+
+![ソリューションで使用する各種 Azure PaaS サービスの図。コール センター アプリの認証には Azure AD Org を使用。クライアント アプリの認証には Azure AD B2C を使用。バックエンドの顧客データには SQL Database を使用。Web アプリと API アプリには Azure App Service を使用。注文処理には Functions、Logic Apps、キュー、Storage などを使用。テレメトリの取得には Azure App Insights を使用](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image2.png "ソリューション アーキテクチャ図")
+
+## 前提条件<a name="前提条件"></a>
+
+1. Microsoft Azure サブスクリプション
+2. Visual Studio 2019 Community Edition が構成されたローカル マシンまたは仮想マシン
+3. Twilio アカウント、または Twilio の試用アカウントのセットアップに使用する個人用携帯電話のいずれかまたはその両方。
+
+## 関連ヘルプ記事<a name="関連ヘルプ記事"></a>
+
+| 説明 | リンク |
+|:---------|:-------------|
+| SQL のファイアウォール | <https://azure.microsoft.com/ja-jp/documentation/articles/sql-database-configure-firewall-settings/> |
+| Web アプリのデプロイ | <https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/> |
+| API アプリのデプロイ | <https://azure.microsoft.com/ja-jp/documentation/articles/app-service-dotnet-deploy-api-app/> |
+| JavaScript クライアントから API アプリへのアクセス | <https://azure.microsoft.com/ja-jp/documentation/articles/app-service-api-javascript-client/> |
+| SQL Database の geo レプリケーションの概要 | <https://azure.microsoft.com/ja-jp/documentation/articles/sql-database-geo-replication-overview/> |
+| Azure AD の概要| <https://azure.microsoft.com/ja-jp/documentation/articles/active-directory-whatis/> |
+| Azure Web Apps の認証 | <http://azure.microsoft.com/blog/2014/11/13/azure-websites-authentication-authorization/> (英語) |
+| アクセス レポートと使用状況レポートの表示 | <https://msdn.microsoft.com/en-us/library/azure/dn283934.aspx> (英語) |
+| Azure AD テナントのカスタム ブランディング | <https://msdn.microsoft.com/en-us/library/azure/Dn532270.aspx> (英語) |
+| サービス プリンシパルの認証 | <https://docs.microsoft.com/ja-jp/azure/app-service-api/app-service-api-dotnet-service-principal-auth> |
+| 一般ユーザー向けサイトの B2C | <https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-dotnet> |
+| Active Directory B2C の使用開始 | <https://azure.microsoft.com/ja-jp/trial/get-started-active-directory-b2c/> |
+| Azure Active Directory の削除方法 | <https://blog.nicholasrogoff.com/2017/01/20/how-to-delete-an-azure-active-directory-add-tenant/> (英語) |
+| アプリのパフォーマンス テストの実行 | <https://devblogs.microsoft.com/devops/announcing-public-preview-for-performanceload-testing-of-azure-webapp/> (英語) |
+| Application Insights のカスタム イベント | <https://azure.microsoft.com/ja-jp/documentation/articles/app-insights-api-custom-events-metrics/> |
+| Application Insights の有効化 | <https://azure.microsoft.com/ja-jp/documentation/articles/app-insights-start-monitoring-app-health-usage/> |
+| 障害の検出 | <https://azure.microsoft.com/ja-jp/documentation/articles/app-insights-asp-net-exceptions/> |
+| パフォーマンスの問題の監視 | <https://azure.microsoft.com/ja-jp/documentation/articles/app-insights-web-monitor-performance/> |
+| ロジック アプリの作成 | <https://azure.microsoft.com/ja-jp/documentation/articles/app-service-logic-create-a-logic-app/> |
+| Logic Apps のコネクタ | <https://azure.microsoft.com/ja-jp/documentation/articles/app-service-logic-connectors-list/> |
+| Logic Apps のドキュメント | <https://docs.microsoft.com/ja-jp/azure/logic-apps/logic-apps-what-are-logic-apps> |
+| Azure Functions - 初めての関数作成 | <https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-create-first-azure-function> |
+| Azure Functions のドキュメント | <https://docs.microsoft.com/ja-jp/azure/logic-apps/logic-apps-azure-functions> |
+<!--
 ## Exercise 1: Proof of concept deployment
 
 Duration: 60 minutes
@@ -332,6 +412,193 @@ In this exercise, you will provision a website via the Azure **Web App + SQL** t
 
     >**Troubleshooting**: If the web site fails to show products, go back and double check all your connection string entries and passwords web application settings.
 
+-->
+## 演習 1: 概念実証版のデプロイ<a name="演習-1:-概念実証版のデプロイ"></a>
+
+時間: 60 分
+
+Microsoft Azure 上に概念実証版デプロイメントを作成してほしいという依頼を Contoso から受けたため、ソリューションで使用する Web アプリ、データベース アプリ、API アプリのデプロイや、ソリューションの主要機能の動作検証などを行います。リソースは、必ず前の手順で作成した App Service Environment 用のリソース グループのものを使用します。
+
+### タスク 1: eコマースの Web サイト、SQL Database、ストレージをデプロイする<a name="タスク-1:-eコマースの-Web-サイト、SQL-Database、ストレージをデプロイする"></a>
+
+この演習では、Azure **Web Apps と SQL** のテンプレートを使用して Azure Portal から Web サイトをプロビジョニングします。その後、スターター プロジェクト内の構成ファイル群を必要に応じて編集し、eコマース Web サイトをデプロイします。
+
+#### サブタスク 1: SQL Database のファイアウォールを構成し接続文字列を取得する<a name="サブタスク-1:-SQL-Database-のファイアウォールを構成し接続文字列を取得する"></a>
+
+1. 新規のタブまたはインスタンスで Azure 管理ポータル (<http://portal.azure.com>) にアクセスし、ラボで指定された Azure 資格情報でログインします。
+
+2. **contososports** リソース グループに移動します。
+
+3. **ContosoSportsDB** という SQL Database を選択します。
+
+    ![contososports リソース グループ ブレードで「ContosoSportsDB」が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image22.png "Azure Portal")
+
+4. [**SQL Database**] ブレードで [**データベース接続文字列の表示**] リンクを選択します。
+
+    ![[SQL Database] ブレード左側のウィンドウで [概要] が選択されている。右側のウィンドウにある [概要] の [接続文字列] (データベース接続文字列の表示) のリンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image23.png "[SQL Database] ブレード")
+
+5. [**データベース接続文字列**] ブレードで **ADO.NET** の接続文字列を選択してコピーし、後で使用するため**メモ帳**に保存します。プレースホルダー内のユーザー名を **demouser**、パスワードを **demo@pass123** に変更します。
+
+    ![[データベース接続文字列] ブレードの ADO.NET の接続文字列が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image24.png "[データベース接続文字列] ブレード")
+
+6. **contososports** リソース グループ ブレードに戻り、**contososports** という SQL Server を選択します。
+
+    ![contososports リソース グループで contososports SQL Server が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/2019-11-15-17-47-46.png "Azure Portal")
+
+7. [**SQL Server**] ブレードの [**概要**] セクション上部にある [**サーバー ファイアウォールの設定**] リンクをクリックします。
+
+    ![[SQL Server] ブレードの [概要] セクションの [サーバー ファイアウォールの設定] タイルが囲まれている](media/2019-03-31-14-37-31.png "[SQL Server] ブレードの [概要] セクション")
+
+8. [**ファイアウォール設定**] ブレードで、名称が **ALL**、開始 IP が **0.0.0.0**、終了 IP が **255.255.255.255** のルールを新規作成します。
+
+    ![[ファイアウォール設定] ブレードのルール名、開始 IP、終了 IP の各フィールドを示すスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image27.png "[ファイアウォール設定] ブレード")
+
+    >**注**: このラボでは、わかりやすいようにこのような設定にします。運用環境では、この例のようにすべての IP アドレスから SQL Database へのアクセスを許可する設定は**適切ではありません**。ファイアウォールの通過を許可する IP アドレスのみを指定します。
+
+9. [**保存**] をクリックします。
+
+    ![ファイアウォール設定の [保存] ボタンのスクリーンショット](media/2019-04-10-16-00-29.png "ファイアウォール設定の [保存] ボタン")
+
+10. ページ上部の [**通知**] リンクをクリックすると、更新の進捗状況を確認できます。
+
+    ![サーバーのファイアウォール規則が正常に更新されたことを示すダイアログ ボックス](media/2019-04-19-13-39-41.png "更新成功を示すダイアログ ボックス")
+
+11. 構成ブレードをすべて閉じます。
+
+#### サブタスク 2: ストレージ アカウントのアクセス キーを取得する<a name="サブタスク-2:-ストレージ-アカウントのアクセス-キーを取得する"></a>
+
+1. **contososports** リソース グループ ブレードに戻り、**contoso** ストレージ アカウントを選択します。
+
+2. [**ストレージ アカウント**] ブレードを下方向にスクロールして [**設定**] メニューから [**アクセス キー**] オプションを選択します。
+
+    ![[ストレージ アカウント] ブレードの [設定] の [アクセス キー] が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image35.png "[ストレージ アカウント] ブレード")
+
+3. [**アクセス キー**] ブレードで [**キー 1**] セクションの**接続文字列**の横にあるコピー ボタンをクリックします。後で使用するため、この値を**メモ帳**に貼り付けます。 
+
+    ![[アクセス キー] ブレードの既定のキー セクションでキー 1 の接続文字列のコピー ボタンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image36.png "[アクセス キー] ブレードの既定のキー セクション")
+
+#### サブタスク 3: Service Bus キューの接続文字列を取得する<a name="サブタスク-3:-Service-Bus-キューの接続文字列を取得する"></a>
+
+1. **contososports** リソース グループ ブレードに戻り、**contoso** の Service Bus 名前空間を選択します。
+
+    ![Service Bus 名前空間のリソースが強調表示されている](media/2020-03-18-10-38-09.png "Service Bus 名前空間")
+
+2. [エンティティ] で [**キュー**] リンクをクリックします。
+
+    ![[エンティティ] の [キュー] リンク](media/2020-03-18-10-38-57.png "[キュー] リンク")
+
+3. [**キュー**] ウィンドウで **receiptgenerator** という Service Bus キューを選択します。
+
+    ![receiptgenerator キューが強調表示されている](media/2020-03-18-10-40-40.png "receiptgenerator キューが強調表示されている")
+
+4. **receiptgenerator** の Service Bus キュー ブレードの [設定] で [**共有アクセス ポリシー**] リンクをクリックします。
+
+    ![[共有アクセス ポリシー] リンクが表示されている](media/2020-03-18-10-42-03.png "[共有アクセス ポリシー] リンクが表示されている")
+
+5. **Publisher** 共有アクセス ポリシーを選択します。
+
+    ![Publisher ポリシーが強調表示されている](media/2020-03-18-10-43-12.png "Publisher ポリシーが強調表示されている")
+
+    >**注**: Azure Service Bus キューの _Publisher_ および _Listener_ の共有アクセス ポリシーは、ラボ環境のセットアップに使用した ARM テンプレートの一部としてデプロイされています。図に示したように、接続文字列をコピーしようとしている **Publisher** ポリシーには、メッセージのキューへの _Send_ のみが許可されています。
+    >
+    > 既定では、作成済みのポリシーはありません。なお、キューにメッセージを送信するパブリッシャーとキューからメッセージを受信するリスナーには個別に共有アクセス ポリシーを作成し、最小限のセキュリティ権限を設定することをおすすめします。 
+
+6. [**SAS ポリシー**] ウィンドウで [**プライマリ接続文字列**] の値をコピーします。後で使用するため、この値を**メモ帳**に貼り付けます。 
+
+    ![[プライマリ接続文字列] が強調表示されている](media/2020-03-18-10-54-39.png "[プライマリ接続文字列] が強調表示されている")
+
+#### サブタスク 4: スターター プロジェクトの構成を更新する<a name="サブタスク-4:--スターター-プロジェクトの構成を更新する"></a>
+
+1. **contososports** リソース グループ ブレードに戻ります。
+
+2. **contosoapp** Web アプリ (種類は **App Service**) を選択します。
+
+    ![ContosoSports のリソースのリスト。Web アプリが選択されている](media/2019-04-19-13-46-40.png "ContosoSports のリソースのリスト")
+
+3. Web アプリの URL をメモ帳にコピーします。
+
+    - [**概要**] リンクを選択します。
+    - 後で使用するため、URL をメモ帳にコピーします。[**クリップボードにコピー**] リンクを使用します。
+
+    ![Web アプリの [概要] 設定のリンクの URL が囲まれている](media/2019-03-22-16-33-05.png "Contoso Web アプリの概要")
+
+4. [**App Service**] ブレードの左側のウィンドウを下方向にスクロールします。[**設定**] メニューで [**構成**] をクリックします。
+
+    ![[App Service] ブレードの [設定] で [構成] リンクをクリック](media/2019-04-19-16-38-54.png "[構成] リンク")
+
+5. **アプリケーション設定**を新規追加し、以下の値を指定します。
+
+   - キー: `AzureQueueConnectionString`
+
+   - 値: 前の手順で作成した **Azure Service Bus キュー**の接続文字列を入力します。
+
+    ![[App Service] ブレードの [アプリケーション設定] セクションで新規エントリの AzureQueueConnectionString が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image40.png "[アプリケーション設定] セクション")
+
+6. [**アプリケーション設定**] の [**接続文字列**] セクションに移動します。
+
+    ![[App Service] ブレードの [接続文字列] セクションの表示](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image41.png "[接続文字列] セクション")
+
+7. 以下の値を持つ**接続文字列**を新規追加します。
+
+   - 名前: `ContosoSportsLeague`
+
+   - 値: 前の手順で作成した **SQL Database** の接続文字列を入力します。
+
+   - 種類: `SQLAzure`
+
+    >**重要**: 文字列のプレースホルダー部分の **{your\_username}** と **{your\_password\_here}** の値を、セットアップ時に指定したユーザー名とパスワードに変更します。
+
+    ![パスワードの文字列のプレースホルダーには次の値が表示される: Password={your\_password\_here};](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image43.png "文字列のプレースホルダーの値")
+
+8. [**保存**] をクリックします。
+
+#### サブタスク 5: Visual Studio から eコマース Web アプリをデプロイする<a name="サブタスク-5:-Visual-Studio-から-eコマース-Web-アプリをデプロイする"></a>
+
+1. Visual Studio の**ソリューション エクスプローラー**で **Web** フォルダーの **Contoso.Apps.SportsLeague.Web** プロジェクトに移動します。
+
+    ![ソリューション エクスプローラーで Solution \'Contoso.Apps.SportsLeague\' (7 projects) の下にある Web フォルダーを展開した状態。その下の Contoso.Apps.SportsLeague.Web が選択されている](media/2019-04-19-14-03-04.png "ソリューション エクスプローラー")
+
+2. **Contoso.Apps.SportsLeague.Web** プロジェクトを右クリックして [**発行**] を選択します。
+
+    >**注**: 設定内容が構成に表示されていない場合は発行しないでください。Azure サブスクリプションに発行する場合は [**新しいプロファイル**] を選択します。
+    > 
+    > ![開発者が残した Visual Studio の発行構成。発行しないように指示するメッセージが示されている。[新しいプロファイル] リンクが囲まれている](media/2019-03-22-12-42-48.png "[新しいプロファイル] を選択")
+
+3. 発行先に [**Azure App Service**] を選択し、[**既存のものを選択**] をクリックしてからウィザード最下部の [**プロファイルの作成**] をクリックします。
+
+    ![[発行] タブで [Microsoft Azure App Service] タイル、[既存のものを選択] ラジオ ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image47.png "[発行] タブ")
+
+4. ログオンを求めるメッセージが表示されたら、Azure サブスクリプションの資格情報でログオンします。
+
+    ![App Service で [既存の App Service の選択] ダイアログが表示されている。サインイン リンクが強調表示されている](media/2019-04-19-14-07-19.png "Azure へのサインイン")
+
+    >**注**: サインインしても何も起こらない場合は、Visual Studio をいったん終了してから再起動してソリューションを再度開きます。その後、再び発行手順を実行します。
+
+5. **Contoso Sports Web App** を選択します (前の手順で指定した名前を使用します)。
+
+    ![サブスクリプションの contososports の下にある contososportsweb0 が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image49.png "サブスクリプション")
+
+6. [**OK**] を選択します。
+
+7. [**発行**] をクリックして Web アプリケーションを発行します。
+
+    >**注**: App Service の .NET Core 3.0.0 のサポートに関する警告が表示された場合、[**OK**] をクリックして無視します。
+    >
+    > ![App Service の .NET Core 3.0.0 のサポートに関する警告](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/2019-11-15-18-12-21.png "App Service の .NET Core 3.0.0 のサポートに関する警告")
+
+8. Web アプリの発行が正常に完了したことを示すメッセージが Visual Studio の [**出力**] ビューに表示されます。
+
+    ![Visual Studio の [出力] ビューのスクリーンショット。発行が成功したことを示すメッセージが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image50.png "Visual Studio の [出力] ビュー")
+
+    >**注**: URL はグローバルに一意である必要があるため、スクリーンショットの出力とは異なる場合があります。
+
+9. 新しい Web アプリケーションが新規ブラウザーで自動的に開きます。メニューの [ストア] リンクを選択して Web サイトを検証します。正常であれば商品アイテムが表示されます。商品データが取得されている場合は、データベースに正常に接続されています。
+
+    ![[ストア] リンクのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image51.png "[ストア] リンク")
+
+    >**トラブルシューティング**: Web サイトで商品が正常に表示されない場合、前の手順で入力した接続文字列、パスワード、Web アプリケーションの設定をすべて再確認します。
+
+<!--
 ### Task 2: Setup SQL Database Geo-Replication
 
 In this exercise, the attendee will provision a secondary SQL Database and configure Geo-Replication using the Microsoft Azure Portal.
@@ -539,6 +806,215 @@ The failover may take a few minutes to complete. You can continue with the next 
 
     ![Screenshot of the Contoso store webpage. Under Team Apparel, a Contoso hat, tank top, and hoodie display.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image74.png "Contoso store webpage")
 
+-->
+### タスク 2: SQL Database の geo レプリケーションをセットアップする<a name="タスク-2:-SQL-Database-の-geo-レプリケーションをセットアップする"></a>
+
+この演習では、セッション参加者が Azure Portal からセカンダリ SQL Database のプロビジョニングと geo レプリケーションの構成を行います。
+
+#### サブタスク 1: セカンダリ データベースを追加する<a name="サブタスク-1:-セカンダリ-データベースを追加する"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. 左側のナビゲーション メニューで [**SQL データベース**] をクリックし、前の手順で作成した SQL Database の名前を選択します。
+
+    ![[SQL データベース] メニュー オプションのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image52.png "SQL データベース")
+
+3. [**設定**] メニューで [**geo レプリケーション**] を選択します。
+
+    ![[設定] セクションで [geo レプリケーション] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image53.png "[設定] セクション")
+
+4. セカンダリ データベースを設置する Azure リージョンを選択します。
+
+    ![[geo レプリケーション] ブレードには各リージョンの場所を示す世界地図が表示される。この地図では、プライマリは青のチェックマークで示された米国西部に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image54.png "[geo レプリケーション] ブレード")
+
+    セカンダリを設置する Azure リージョンには、SQL Database がホストされているリージョンのリージョン ペアを選択します。このラボで使用するリージョン ペアの場所については <https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions> を参照してください。
+
+    >**注**: セカンダリ リージョンとして使用できないリージョンを選択した場合、料金プランが表示されません。他のリージョンを選択してください。
+    > 
+    > ![geo レプリケーション先のリージョンの選択が不正。使用不可のオプションが表示されている](media/2019-03-30-16-05-25.png "使用不可のオプションが表示されている")
+
+5. [**セカンダリの作成**] ブレードで [**セカンダリの種類**] を [**読み取り可能**] に設定します。
+
+6. [**ターゲット サーバー** - ***必要な設定の構成***] を選択します。
+
+    ![[ターゲット サーバー - 必要な設定の構成] 設定オプションが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image55.png "[ターゲット サーバー] オプション")
+
+7. [**新しいサーバー**] ブレードで次の構成を指定します。
+
+   - サーバー名: **一意の値 (緑色のチェックマークが表示されることを確認)**
+
+   - サーバー管理者ログイン: **demouser**
+
+   - パスワード、およびパスワードの確認: **demo@pass123**
+
+    ![前の手順で定義した設定が [新しいサーバー] ブレードのフィールドに表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image56.png "[新しいサーバー] ブレード")
+
+8. [**新しいサーバー**] ブレードで値が承認されたら、[**選択**] をクリックします。
+
+    ![[選択] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image20.png "[選択] ボタン")
+
+9. [**セカンダリの作成**] ブレードで [**OK**] をクリックします。
+
+    ![[OK] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image57.png "[OK] ボタン")
+
+    > **注**: geo レプリケーションは完了までに数分程度かかります。
+
+10. geo レプリケーションのプロビジョニングが完了したら、左側のナビゲーション メニューで [**SQL データベース**] を選択します。
+
+    ![Azure Portal のナビゲーション メニューの [SQL データベース] オプション](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image52.png "SQL データベース")
+
+11. 前の手順で作成したセカンダリ SQL Database の名前を選択します。
+
+    ![データベースのリストの中からセカンダリ レプリケーション ロールとして ContosoSportsDB を選択](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image58.png "データベース リスト")
+
+12. [概要] セクションの [SQL データベース] ブレードで SQL Database サーバー名のリンクを選択します。
+
+    ![[概要] セクションの [SQL データベース] ブレードでサーバー名 (contososqlserver2.database.windows.net) のリンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image61.png "[概要] セクションの [SQL データベース] ブレード")
+
+13. [**SQL Server**] ブレードの [**概要**] ウィンドウで [**ファイアウォール設定の表示**] リンクを選択します。
+
+    ![[SQL Server] ブレード上部の [ファイアウォール設定の表示] タイルが赤で囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image62.png "[概要] セクションの [SQL Server] ブレード")
+
+14. [**ファイアウォール設定**] ブレードで、名称が **ALL**、開始 IP が **0.0.0.0**、終了 IP が **255.255.255.255** のルールを新規作成します。
+
+    ![[ファイアウォール設定] ブレードの [新しいルール] セクションで前述の設定の新規ルールが作成されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image27.png "[新しいルール] セクション")
+
+    >**注**: このラボでは、わかりやすいようにこのような設定にします。運用環境では、この例のようにすべての IP アドレスから SQL Database へのアクセスを許可する設定は**適切ではありません**。ファイアウォールの通過を許可する IP アドレスのみを指定してください。
+
+15. [**保存**] をクリックします。
+
+    ![ファイアウォール設定の [保存] ボタンのスクリーンショット](media/2019-04-10-16-00-29.png "ファイアウォール設定の [保存] ボタン")
+
+16. ページ上部の [**通知**] リンクをクリックすると、更新の進捗状況を確認できます。
+
+    ![サーバーのファイアウォール規則が正常に更新されたことを示すダイアログ ボックス](media/2019-04-19-13-39-41.png "更新成功を示すダイアログ ボックス")
+
+17. 構成ブレードをすべて閉じます。
+
+#### サブタスク 2: SQL フェールオーバー グループをセットアップする<a name="サブタスク-2:-SQL-フェールオーバー-グループをセットアップする"></a>
+
+SQL Database の geo レプリケーションを構成すると、Azure SQL フェールオーバー グループ機能で SQL Database を「自動フェールオーバー」できます。この機能では、SQL Database で障害やサービス停止が発生した場合に、アプリケーションが単一の接続文字列エンドポイントを使用して SQL Database をプライマリ データベースからセカンダリ データベースに自動的にフェールオーバーします。
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. 左側のナビゲーション メニューで [**SQL データベース**] をクリックし、前の手順で作成した*プライマリ* SQL Database の名前を選択します。
+
+    ![[SQL データベース] タイルのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image52.png "Azure Portal")
+
+3. [**SQL データベース**] ブレードの [**概要**] ウィンドウで**サーバー名**を選択します。
+
+    ![[SQL データベース] ブレードでサーバー名が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/primarysqldatabaseserverlink.png "[SQL データベース] ブレードでサーバー名が強調表示されている")
+
+4. [**SQL Server**] ブレードで [**設定**]、[**フェールオーバー グループ**] の順に選択します。
+
+    ![フェールオーバー グループ設定オプション](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlserverfailovergroupslink.png "フェールオーバー グループ設定オプション")
+
+5. [**フェールオーバー グループ**] ウィンドウで [**グループの追加**] ボタンをクリックします。
+
+    ![[グループの追加] ボタン](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/failovergroupsaddgroupbutton.png "[グループの追加] ボタン")
+
+6. [**フェールオーバー グループ**] ウィンドウで一意の**フェールオーバー グループ名**を入力します。
+
+    ![[フェールオーバー グループ名] フィールド](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailovergroupname.png "[フェールオーバー グループ名] フィールド")
+
+7. [**セカンダリ サーバー**] をクリックし、前の手順で作成した**セカンダリ SQL Database** を選択します。
+
+    ![セカンダリ SQL Database が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailoversecondaryserver.png "セカンダリ SQL Database が強調表示されている")
+
+8. [**グループ内のデータベース**] をクリックし **ContosoSportsDB** データベースを選択してから [**選択**] をクリックします。
+
+    ![ContosoSportsDB を選択する手順が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailoversecondarydatabase.png "ContosoSportsDB を選択する手順が強調表示されている")
+
+9. [**作成**] をクリックして SQL フェールオーバー グループを作成します。
+
+10. フェールオーバー グループが作成されたら、そのグループをリストから選択します。
+
+    ![フェールオーバー グループが強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailovergrouplist.png "フェールオーバー グループが強調表示されている")
+
+11. [**フェールオーバー グループ**] ウィンドウでは、地図上にフェールオーバー グループ内のプライマリとセカンダリの SQL Database サーバーの場所が表示されます。プライマリ データベースはデータの読み取り/書き込みの**自動**フェールオーバー対象として表示されます。セカンダリ データベースはこの時点では読み取り専用であるため、対象にはなりません。
+
+    ![プライマリとセカンダリのデータベースの場所を示す地図](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailovergroupmap.png "プライマリとセカンダリのデータベースの場所を示す地図")
+
+12. 下方向にスクロールすると、地図の下に [**読み取り/書き込みリスナー エンドポイント**] と [**読み取り専用リスナー エンドポイント**] が表示されます。これにより、アプリケーションからエンドポイントへの接続先として、個々の SQL Server エンドポイントではなく SQL フェールオーバー グループを構成できます。
+
+    後で使用するため、両方の**リスナー エンドポイント**の値をメモしておきます。
+
+    ![読み取り/書き込みエンドポイントと読み取り専用エンドポイントが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/sqlfailovergroupendpoints.png "読み取り/書き込みエンドポイントと読み取り専用エンドポイントが表示されている")
+
+13. **contososports** リソース グループ ブレードに戻ります。
+
+14. **contosoapp** Web アプリ (種類は **App Service**) を選択します。
+
+    ![contosoapp が強調表示されている](media/2019-04-19-13-46-40.png "contosoapp が強調表示されている")
+
+15. [**App Service**] ブレードの左側のウィンドウを下方向にスクロールします。[**設定**] メニューで [**構成**] をクリックします。
+
+    ![[構成] オプションが強調表示されている](media/2019-04-19-16-38-54.png "[構成] オプションが強調表示されている")
+
+16. [**接続文字列**] セクションに移動し、**ContosoSportsLeague** 接続文字列の値を、前の手順でメモを取った **Azure SQL フェールオーバー グループの読み取り/書き込みリスナー エンドポイント**に変更します。
+
+    > 注: 接続文字列の書式は、以下のとおりです。
+    > ```
+    > Server=tcp:{failover_group_endpoint};Initial Catalog=ContosoSportsDB;Persist Security Info=False;User ID={your_username};Password={your_password_here};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    > ```
+    >
+    > 文字列のプレースホルダーの **{your_username}**、**{your_password_here}**、**{failover_group_endpoint}** の部分の値をユーザー名、パスワード、SQL Database フェールオーバー グループの読み取り/書き込みリスナー エンドポイントに変更します。ユーザー名とパスワードは SQL Server 作成時と同じものを使用します。
+
+17. [**保存**] をクリックします。
+
+#### サブタスク 3: SQL Database フェールオーバー グループのフェールオーバーを実行する<a name="サブタスク-3:-SQL-Database-フェールオーバー-グループのフェールオーバーを実行する"></a>
+
+>**注**: このサブタスクはオプションです。
+
+レプリケーションとフェールオーバーの処理には 10 ～ 30 分程度かかります。サブタスク 3 および 4 は省略してタスク 3 に直接進んでもかまいません。ただし、時間に余裕があればこれらの手順も習得することをおすすめします。
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. 左側のナビゲーション メニューで [**SQL データベース**] をクリックし、前の手順で作成した*プライマリ* SQL Database の名前を選択します。
+
+    ![[SQL Databases] タイルのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image52.png "Azure Portal")
+
+3. [**概要**] ウィンドウで**サーバー名**を選択します。
+
+    ![サーバー名が強調表示されている](images/2020-03-17-19-35-23.png "サーバー名が強調表示されている")
+
+4. [**SQL Server**] ブレードで [**設定**]、[**フェールオーバー グループ**] の順に選択します。
+
+    ![[フェールオーバー グループ] オプションが強調表示されている](images/2020-03-17-19-37-00.png "[フェールオーバー グループ] オプションが強調表示されている")
+
+5. リストから**フェールオーバー グループ**を選択します。
+
+    ![リスト内のフェールオーバー グループが強調表示されている](images/2020-03-17-19-38-01.png "リスト内のフェールオーバー グループが強調表示されている")
+
+6. [フェールオーバー グループ] ブレードで [**強制フェールオーバー**] ボタン、[**はい**] の順にクリックして SQL Database フェールオーバー グループの強制フェールオーバーを設定することを確認します。
+
+    ![強制フェールオーバーの確認画面](images/2020-03-17-19-39-56.png "強制フェールオーバーの確認画面")
+
+フェールオーバーは完了までに数分程度かかります。その間に次のサブタスクに進みます。
+
+#### サブタスク 4: フェールオーバー後に eコマース Web アプリをテストする<a name="サブタスク-4:-フェールオーバー後に-eコマース-Web-アプリをテストする"></a>
+
+1. Azure Portal で [**リソース グループ**] をクリックし、**contososports** を選択します。
+
+2. 前の手順で作成した **Web アプリ**を選択します。
+
+3. [**App Service**] ブレードで [**概要**] を選択します。
+
+    ![[概要] メニュー オプションのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image71.png "[App Service] ブレード")
+
+4. [**概要**] ウィンドウで Web アプリの **URL** を選択し、ブラウザーの新規タブで開きます。
+
+    ![[App Service] ブレードの [概要] セクションの URL (http;//contososportsweb4azurewebsites.net) リンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image72.png "[App Service] ブレードの [概要] セクション")
+
+5. Internet Explorer に eコマース Web アプリが 読み込まれたら、Web サイトのナビゲーション バーで [**ストア**] を選択します。
+
+    ![Contoso Sports League の Web サイトのナビゲーション バーの [ストア] ボタンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image73.png "Contoso Sports League の Web サイトのナビゲーション バー")
+
+6. データベースから取得された製品リストが表示されることを確認します。
+
+    ![Contoso ストアの Web ページのスクリーンショット。チーム ウェアの項目に Contoso の帽子、タンクトップ、パーカーが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image74.png "Contoso ストアの Web ページ")
+
+<!--
 ### Task 3: Deploying the Call Center admin website
 
 In this exercise, you will provision a website via the Azure Web App template using the Microsoft Azure Portal. You will then edit the necessary configuration files in the Starter Project and deploy the call center admin website.
@@ -611,6 +1087,80 @@ In this exercise, you will provision a website via the Azure Web App template us
 
     ![The Contoso website displays the Contoso Sports League Admin webpage, which says that orders that display below are sorted by date, and you can select an order to see its details. However, at this time, there is no data available under Completed Orders.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image89.png "Contoso website")
 
+-->
+### タスク 3: コール センター管理 Web サイトをデプロイする<a name="タスク-3:-コール-センター管理-Web-サイトをデプロイする"></a>
+
+この演習では、Azure Web アプリ テンプレートを使用して Azure Portal から Web サイトをプロビジョニングします。その後、スターター プロジェクト内の構成ファイル群を必要に応じて編集し、コール センター管理 Web サイトをデプロイします。
+
+#### サブタスク 1: コール センター管理 Web アプリをプロビジョニングする<a name="サブタスク-1:-コール-センター管理-Web-アプリをプロビジョニングする"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. [**+リソースの作成**]、[**Web**]、[**Web アプリ**] の順に選択します。
+
+3. Web アプリの**一意の URL** を指定し、このラボで使用している**リソース グループ**を選択します。[**ランタイム スタック**] には **.NET Core 3.1 (LTS)** を指定します。
+
+    ![[Web アプリ] ブレードのアプリ名フィールドが contososportscallcenterapp に設定されている](media/2019-03-28-05-29-59.png "[Web アプリ] ブレード")
+
+4. [**Linux プラン**] を選択し、Web アプリ用の Linux ベースの App Service プランを新規作成します。
+
+5. 値が承認されたら [**確認と作成**]、[**作成**] の順にクリックします。  プロビジョニングには数分程度かかります。
+
+#### サブタスク 2: スターター プロジェクトの構成を更新する<a name="サブタスク-2:-スターター-プロジェクトの構成を更新する"></a>
+
+1. 前の手順でプロビジョニングしたコール センター管理アプリの [**App Service**] ブレードに移動します。
+
+    ![[App Service] ブレードの表示](media/2020-03-17-19-59-03.png "[App Service] ブレード")
+
+2. [**App Service**] ブレードの左側のウィンドウで [**構成**] を選択します。
+
+    ![[App Service] ブレードの [設定] で [構成] リンクをクリック](media/2019-04-19-16-38-54.png "[構成] リンク")
+
+3. 下方向にスクロールして [**接続文字列**] セクションに移動します。
+
+4. **接続文字列**を新規追加し、以下の値を指定します。
+
+    - 名前: `ContosoSportsLeague`
+
+    - 値: **SQL Database フェールオーバー グループの読み取り/書き込みリスナー エンドポイント**の接続文字列を入力します。
+
+    - 種類: `SQL Azure`
+
+    ![[接続文字列] フィールドに前の手順で定義した値が表示されている](media/2019-04-11-04-31-51.png "[接続文字列] フィールド")
+
+5. [**更新**] ボタンをクリックします。
+
+6. [**保存**] ボタンをクリックします。
+
+    ![[App Service] ブレードの [保存] ボタンが囲まれている](media/2019-03-28-05-36-38.png "[App Service] ブレード")
+
+#### サブタスク 3: Visual Studio からコール センター管理 Web アプリをデプロイする<a name="サブタスク-3:-Visual-Studio-からコール-センター管理-Web-アプリをデプロイする"></a>
+
+1. Visual Studio の**ソリューション エクスプローラー**で **Web** フォルダーの **Contoso.Apps.SportsLeague.Admin** プロジェクトに移動します。
+
+2. **Contoso.Apps.SportsLeague.Admin** プロジェクトを右クリックして [**発行**] を選択します。
+
+    ![ソリューション エクスプローラーで Contoso.Apps.SportsLeague.Admin のメニューを右クリックした様子。[発行] が選択されている](media/2019-04-19-14-30-03.png "右クリック メニュー")
+
+3. 発行先に [**App Service Linux**] を指定し、[**既存のものを選択**]、[**プロファイルの作成**] を選択します。
+
+    ![[発行] タブで [App Service Linux] が選択されている。その下で [既存のものを選択] ラジオボタンが選択されている](media/2020-03-17-20-09-01.png "[発行] タブ")
+
+4. コール センター管理アプリの **Web アプリ**を選択します。
+
+    ![[App Service] セクションのツリー ビュー下部に contososports フォルダーが展開されていて、コール センター Web アプリが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image88.png "[App Service] セクション")
+
+5. [**OK**] を選択します。
+
+6. [**発行**] をクリックします。
+
+    ![Visual Studio の出力画面に Contoso.Apps.SportsLeague.Admin の発行が成功したことを示すメッセージが表示されている](media/2019-03-28-05-45-28.png "発行成功")
+
+7. デプロイが完了したら Web アプリに移動します。以下のような内容が表示されます。
+
+    ![Contoso の Web サイトに Contoso Sports League 管理 Web ページが表示されている。下部の注文表示欄は日付順に並び、各注文を選択すると詳細が表示される。ただし、現時点では「Completed Orders」の下の注文にはデータが含まれていない](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image89.png "Contoso の Web サイト")
+
+<!--
 ### Task 4: Deploying the payment gateway
 
 In this exercise, the attendee will provision an Azure API app template using the Microsoft Azure Portal. The attendee will then deploy the payment gateway API to the API app.
@@ -663,6 +1213,60 @@ In this exercise, the attendee will provision an Azure API app template using th
 
    ![Payment Gateway is up and running and the Swagger UI is displayed.](media/2019-04-11-04-58-04.png "Swagger UI")
 
+-->
+### タスク 4: 支払いゲートウェイをデプロイする<a name="タスク-4:-支払いゲートウェイをデプロイする"></a>
+
+この演習では、セッション参加者が Azure Portal から Azure API アプリ テンプレートをプロビジョニングします。その後、支払いゲートウェイ API を API アプリにデプロイします。
+
+#### サブタスク 1: 支払いゲートウェイ API アプリをプロビジョニングする<a name="サブタスク-1:-支払いゲートウェイ-API-アプリをプロビジョニングする"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. [**+リソースの作成**] を選択し、マーケットプレースの検索ボックスに「**API App**」と入力して **Enter** キーを押します。  [**作成**] ボタンをクリックします。
+
+    ![Azure Portal の左側のメニューで [新規作成] が選択されている。[新規作成] ブレードの検索フィールドに「API App」と入力されている](media/2019-03-28-07-57-54.png "Azure Portal - API アプリの作成")
+
+3. 新規作成した **API アプリ**のブレードで以下の値を指定します。
+
+   - **アプリ名**: アプリケーションの一意の名前を指定します。
+   - **サブスクリプション**: 自身の Azure MSDN サブスクリプションを指定します。
+   - **リソース グループ**: [**既存のものを使用**] オプションを選択します。
+   - **App Service プラン/場所**: 前の手順で指定したプライマリ リージョンと同じリージョンを指定します。
+   - **Application Insights**: [**無効にする**] を選択します。
+
+    ![API アプリのブレードの構成フィールドが表示されている](media/2019-04-20-14-55-42.png "構成フィールドの表示")
+
+4. 値が承認されたら [**作成**] をクリックします。  プロビジョニングには数分程度かかります。
+
+#### サブタスク 2: Visual Studio から Contoso.Apps.PaymentGateway プロジェクトをデプロイする<a name="サブタスク-2:-Visual-Studio-から-Contoso.Apps.PaymentGateway-プロジェクトをデプロイする"></a>
+
+1. Visual Studio の**ソリューション エクスプローラー**で **API** フォルダーの **Contoso.Apps.PaymentGateway** プロジェクトに移動します。
+
+2. **Contoso.Apps.PaymentGateway** プロジェクトを右クリックして [**発行**] を選択します。
+
+    ![ソリューション エクスプローラーで Contoso.Apps.PaymentGateway が選択され、右クリック メニューで [発行] が選択されている](media/2019-04-19-14-52-22.png "ソリューション エクスプローラー")
+
+3. [**Web の発行**] ダイアログ ボックスで [**Azure App Service**]、[**既存のものを選択**]、[**プロファイルの作成**] の順に選択します。
+
+    > **注**: Azure リソース グループが表示されていない場合、[**新しいプロファイル**] を選択します。
+
+4. 前の手順で作成した支払いゲートウェイ API アプリを選択し、[**OK**] をクリックします。
+
+    ![[App Service] セクションで contososports フォルダーが展開されていて、PaymentsAPIO が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image98.png "[App Service] セクション")
+
+5. [**発行**] をクリックします。
+
+6. Web アプリの発行が正常に完了したことを示すメッセージが Visual Studio の [**出力**] ビューに表示されます。
+
+    ![Visual Studio の出力で Web アプリが正常に発行されたことが示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image99.png "Visual Studio の出力")
+
+7. 後で使用するため、デプロイした **API アプリ**のゲートウェイの **URL** をメモしておきます。
+
+8. ブラウザーで Web アプリを開くと、API の Swagger UI が表示されます。
+
+   ![支払いゲートウェイが稼働を開始し Swagger UI が表示されている](media/2019-04-11-04-58-04.png "Swagger UI")
+
+<!--
 ### Task 5: Deploying the Offers Web API
 
 In this exercise, the attendee will provision an Azure API app template using the Microsoft Azure Portal. The attendee will then deploy the Offers Web API.
@@ -759,6 +1363,104 @@ In this exercise, the attendee will provision an Azure API app template using th
 
     ![Swagger UI displaying API call response.](media/2020-03-17-20-56-31.png "Swagger UI")
 
+-->
+### タスク 5: Offers Web API をデプロイする<a name="タスク-5:-Offers-Web-API-をデプロイする"></a>
+
+この演習では、セッション参加者が Azure Portal から Azure API アプリ テンプレートをプロビジョニングします。その後、Offers Web API をデプロイします。
+
+#### サブタスク 1: Offers Web API アプリをプロビジョニングする<a name="サブタスク-1:-Offers-Web-API-アプリをプロビジョニングする"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. [**+リソースの作成**] を選択し、マーケットプレースの検索ボックスに「**API App**」と入力して **Enter** キーを押します。  [**作成**] ボタンをクリックします。
+
+3. 新規作成した **API アプリ**のブレードで、その **API アプリ**に一意の名前を指定します。また、前の手順で使用したリソース グループと App Service プランが選択されていることを確認します。
+
+    ![API アプリのブレードでアプリ名として「offersapith」と入力されている。アプリの構成フィールドが表示されている](media/2019-04-11-05-03-33.png "API アプリのブレード")
+
+4. 値が承認されたら [**作成**] ボタンをクリックします。
+
+5. Web アプリのテンプレートのプロビジョニングが完了したら、左側のナビゲーション メニューの [**App Service**] をクリックし、前の手順で作成した Offers API アプリを選択して、新しい API アプリを開きます。
+
+   ![Azure Portal 左側の [その他のサービス] が選択されていて、右下の [Web + モバイル] に [App Service] が表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image101.png "Azure Portal、その他のサービス")
+
+#### サブタスク 2: クロス オリジン リソース共有 (CORS) を構成する<a name="サブタスク-2:-クロス-オリジン-リソース共有-(CORS)-を構成する"></a>
+
+1. Offers API の [**App Service**] ブレードの [**API**] メニューを下方向にスクロールして、[**CORS**] を選択します。
+
+    ![[App Service] ブレードの [API] で [CORS] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image102.png "[App Service] ブレード")
+
+2. [**許可されたオリジン**] テキスト ボックスで `*` を指定してすべてのオリジンを許可し、[**保存**] をクリックします。
+
+    >**注**: 通常、この設定は運用環境ではおすすめしません。運用環境では特定のドメインを入力し、API への CORS アクセスを許可する必要があるオリジンのみに限定します。このラボでは、わかりやすいようにワイルドカード (*) を使用します。
+
+    ![CORS の構成ブレードが表示されている。  [許可されたオリジン] の値として * が入力されている](media/2019-03-28-08-20-57.png "CORS の構成ブレード")
+
+#### サブタスク 3: スターター プロジェクトの構成を更新する<a name="サブタスク-3:-スターター-プロジェクトの構成を更新する"></a>
+
+1. Offers API の [**App Service**] ブレードで [**構成**] を選択します。
+
+    ![[App Service] ブレードの [設定] で [構成] リンクをクリック](media/2019-04-19-16-38-54.png "[構成] リンク")
+
+2. [**接続文字列**] セクションで**接続文字列**を新規追加し、以下の値を指定します。
+
+      - 名前: `ContosoSportsLeague`
+
+      - 値: **SQL Database フェールオーバー グループの読み取り専用リスナー エンドポイント**の接続文字列を入力します。
+
+      - 種類: `SQL Azure`
+
+        ![[接続文字列] フィールドに前の手順で定義した値が表示されている](media/2019-04-11-04-31-51.png "[接続文字列] フィールド")
+
+        >**注**: SQL Database フェールオーバー グループの読み取り専用リスナー エンドポイントの接続文字列の書式は、以下のとおりです。
+        >
+        > ```
+        > Server=tcp:{failover_group_endpoint};Initial Catalog=ContosoSportsDB;Persist Security Info=False;User ID={your_username};Password={your_password_here};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+        > ```
+        >
+        > 文字列のプレースホルダー部分の **{your\_username}**、**{your\_password\_here}**、**{failover_group_endpoint}** の値を、セットアップ時に作成したユーザー名 (demouser)、パスワード (demo@pass123)、およびフェールオーバー グループの読み取り専用リスナー エンドポイントに変更します。
+        >
+        > ![パスワードの文字列のプレースホルダーには次の値が表示される: Password={your\_password\_here};](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image43.png "文字列のプレースホルダーの値")
+        >
+        > SQL フェールオーバー グループの読み取り専用リスナー エンドポイントは、`.secondary.database.windows.net` という文字列が末尾に付く DNS 名です。この値は、SQL フェールオーバー グループをセットアップしたときにコピーしたものです。
+
+3. [**更新**] ボタンをクリックします。
+
+4. [**保存**] ボタンをクリックします。
+
+    ![[App Service] ブレードの [保存] ボタンが囲まれている](media/2019-03-28-05-36-38.png "[App Service] ブレード")
+
+#### サブタスク 4: Visual Studio から Contoso.Apps.SportsLeague.Offers プロジェクトをデプロイする<a name="サブタスク-4:-Visual-Studio-から-Contoso.Apps.SportsLeague.Offers-プロジェクトをデプロイする"></a>
+
+1. Visual Studio の**ソリューション エクスプローラー**で **API** フォルダーの **Contoso.Apps.SportsLeague.Offers** プロジェクトに移動します。
+
+2. **Contoso.Apps.SportsLeague.Offers** プロジェクトを右クリックして [**発行**] を選択します。
+
+    ![ソリューション エクスプローラーで Contoso.Apps.SportsLeague.Offers が選択されていて右クリック メニューで [発行] が選択されている](media/2019-04-19-15-03-45.png "ソリューション エクスプローラー")
+
+3. [**Web の発行**] ダイアログ ボックスで [**Azure App Service**]、[**既存のものを選択**]、[**プロファイルの作成**] の順に選択します。
+
+    ![[発行] タブで [Microsoft Azure App Service] タイル、[既存のものを選択] ラジオ ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image109.png "[発行] タブ")
+
+4. 前の手順で作成した Offers API アプリを選択し、[**OK**] をクリックします。
+
+    ![[App Service] セクションで contososports フォルダーが展開されていて OffersAPI4 が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image110.png "[App Service] セクション")
+
+5. [**発行**] をクリックします。
+
+6. API アプリの発行が正常に完了したことを示すメッセージが Visual Studio の [**出力**] ビューに表示されます。
+
+7. 後で使用するため、デプロイされた API アプリの URL をメモしておきます。
+
+8. ブラウザーで Web アプリを開くと、API の Swagger UI が表示されます。
+
+    ![Offers API が稼働を開始し Swagger UI が表示されている](media/2019-04-11-05-20-40.png "Swagger UI")
+
+9. Offers API の Swagger UI で、API の `/api/get` メソッドを選択します。続いて [**試してみる**] ボタン、[**実行**] の順に選択し、Web ブラウザーで Swagger UI 内部からの API 呼び出しをテストします。実行後、出力画面を下方向にスクロールして API 呼び出しの実行結果を確認します。
+
+    ![Swagger UI で API 呼び出しの応答が表示されている](media/2020-03-17-20-56-31.png "Swagger UI")
+
+<!--
 ### Task 6: Update and deploy the e-commerce website
 
 #### Subtask 1: Update the Application Settings for the Web App that hosts the Contoso.Apps.SportsLeague.Web project
@@ -821,6 +1523,70 @@ In this exercise, the attendee will provision an Azure API app template using th
 
 >**Leader Note**: If the attendee is still experiencing CORS errors, ensure the URLs to the Web App in Azure local host are exact.
 
+-->
+### タスク 6: eコマース Web サイトを更新してデプロイする<a name="タスク-6:-eコマース-Web-サイトを更新してデプロイする"></a>
+
+#### サブタスク 1: Contoso.Apps.SportsLeague.Web プロジェクトをホストする Web アプリケーションの設定を更新する<a name="サブタスク-1:-Contoso.Apps.SportsLeague.Web-プロジェクトをホストする-Web-アプリケーションの設定を更新する"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. [**リソース グループ**]、**contososports** リソース グループの順に選択します。
+
+3. フロントエンド Web アプリケーションとして **App Service Web アプリ**を選択します。
+
+    ![右側の [リソース グループ] ブレードの [名前] で contosoapp が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image113.png "[リソース グループ] ブレード")
+
+4. [**App Service**] ブレードを下方向にスクロールし、左側のウィンドウの [**構成**] を選択します。
+
+    ![[App Service] ブレードの [設定] で [構成] リンクをクリック](media/2019-04-19-16-38-54.png "[構成] リンク")
+
+5. 下方向にスクロールして [**アプリケーション設定**] セクションに移動します。
+
+6. **アプリケーション設定**を新規追加し、以下の値を指定します。
+
+   - アプリケーション設定名: `paymentsAPIUrl`
+
+   - 値: `/api/nvp` という文字列が末尾に付く支払いゲートウェイ API アプリの **HTTPS** プロトコルの URL を入力します。
+
+        >**例**: `https://paymentsapi0.azurewebsites.net/api/nvp`
+
+    ![[App Service] ブレードの [アプリケーション設定] セクションで、前の手順で定義したアプリケーション設定の値が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image116.png "アプリケーション設定")
+
+7. **アプリケーション設定**をもう 1 つ追加し、以下の値を指定します。
+
+   - アプリケーション設定名: `offersAPIUrl`
+
+   - 値: `/api/get` という文字列が末尾に付く Offers API アプリの **HTTPS** プロトコルの URL を入力します。
+
+    >**例**: `https://offersapi4.azurewebsites.net/api/get`
+
+    ![[App Service] ブレードの [アプリケーション設定] セクションで、前の手順で定義したアプリケーション設定の値が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image117.png "アプリケーション設定")
+
+    >**注**: どちらの API の URL も **SSL** (https://) であることを確認します。SSL ではない場合、CORS エラーが発生します。
+
+8. [**保存**] をクリックします。
+
+#### サブタスク 2: アプリケーション設定が適切であることを検証する<a name="サブタスク-2:-アプリケーション設定が適切であることを検証する"></a>
+
+1. [**App Service**] ブレードで [**概要**] を選択します。
+
+    ![[App Service] ブレード左側で [概要] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image119.png "[**App Service**] ブレード")
+
+2. [**概要**] ウィンドウで Web アプリの **URL** を選択し、ブラウザーの新規タブで開きます。
+
+    ![[App Service] ブレード右側の [概要] で URL (http://contososportsweb2101.azurewebsites.net) リンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image120.png "[App Service] ブレード")
+
+3. Offers API から提供される最新製品がホーム ページに表示されます。
+
+    ![Contoso Sports League の Web ページに本日のおすすめが表示されている: 野球用ソックス、自転車、野球用グローブ](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image121.png "Contoso Sports League の Web ページ")
+
+4. サイト各部が正常に機能しているかテストするため、注文テストを複数回行います。  **支払い処理では既定のデータを承認します。**
+
+    ![Contoso Sports League の Web ページに注文完了のメッセージが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image122.png "Contoso Sports League の Web ページ")
+
+>**トレーナー向けメモ**: 参加者の CORS エラーが発生し続けている場合は、Azure ローカル ホストの Web アプリの URL が正しいかどうか確認します。
+
+<!--
 ## Exercise 2: Identity and Security
 
 Duration: 75 Minutes
@@ -853,6 +1619,40 @@ The Contoso call center admin application will only be accessible by users of th
 
 6. Close the **Azure Active Directory** blades.
 
+-->
+## 演習 2: ID とセキュリティ<a name="演習-2:-ID-とセキュリティ"></a>
+
+時間: 75 分
+
+Contoso のコール センター管理アプリケーションは、Contoso の Active Directory 環境からのみアクセスできるようにします。新規 Azure AD テナントを作成し、アプリケーションではそのテナントからのログオンのみを許可し、安全性を確保します。
+
+### タスク 1: Azure AD Premium 試用版を有効化する<a name="タスク-1:-Azure-AD-Premium-試用版を有効化する"></a>
+
+>**注**: このタスクは**オプション**であり、自身のサブスクリプションに関連付けられた Azure AD テナントのグローバル管理者のみが実施できます。
+
+1. 新規のタブまたはインスタンスで Azure 管理ポータル (<http://portal.azure.com>) にアクセスします。
+
+2. 左側のナビゲーション メニューで [**Azure Active Directory**] を選択します。
+
+    ![[Azure Active Directory] メニュー オプション](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image123.png "Azure Portal")
+
+3. [**Azure Active Directory**] ブレードで [**会社のブランド**] オプションを選択します。
+
+    ![[Azure Active Directory] ブレードで [会社のブランド] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image124.png "[Azure Active Directory] ブレード")
+
+4. 右側のウィンドウで [**無料の Premium 評価版を入手...**] リンクをクリックします。
+
+    ![[Azure Active Directory] ブレード左側で [会社のブランド] が選択されている。右側では [無料の Premium 評価版を入手...] リンクが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image125.png "[Azure Active Directory] ブレード")
+
+    既に Azure Active Directory Premium をご利用の場合は、この手順を省いてタスク 2 に進みます。
+
+5. [**アクティブ化**] ブレードで [**Azure AD Premium P2**] の [**無料試用版**] リンクを選択し、[**アクティブ化**] をクリックします。
+
+    ![[Activate] ブレードで [Azure AD Premium P2] ボックスの [無料試用版] リンクが選択され、[アクティブ化] ボタンが強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image126.png "[アクティブ化] ブレード")
+
+6. [**Azure Active Directory**] ブレードを閉じます。
+
+<!--
 ### Task 2: Create a new Contoso user
 
 >**Note**: This task is **optional**, and it is valid only if you are a global administrator on the Azure AD tenant associated with your subscription.
@@ -892,6 +1692,47 @@ The Contoso call center admin application will only be accessible by users of th
 
     ![Screenshot of the Create button.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image134.png "Create button")
 
+-->
+### タスク 2: Contoso ユーザーを新規作成する<a name="タスク-2:-Contoso-ユーザーを新規作成する"></a>
+
+>**注**: このタスクは**オプション**であり、自身のサブスクリプションに関連付けられた Azure AD テナントのグローバル管理者のみが実施できます。
+
+1. 新規のタブまたはインスタンスで Azure 管理ポータル (<http://portal.azure.com>) にアクセスします。
+
+2. 左側のナビゲーション メニューで [**Azure Active Directory**] を選択します。
+
+    ![[Azure Active Directory] メニュー オプションのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image123.png "Azure Portal")
+
+3. [**Azure Active Directory**] ブレードで [**カスタム ドメイン名**] をクリックします。
+
+    ![[カスタム ドメイン名] メニュー オプションのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image128.png "カスタム ドメイン名")
+
+4. 使用する Azure AD テナントの**ドメイン名**をコピーします。ドメイン名の書式は *[テナント名\].onmicrosoft.com* となります。
+    これは新規ユーザーのユーザー名を作成するときに使用されます。
+
+    ![[名前] の下でドメイン名が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image129.png "ドメイン名")
+
+5. [**Azure Active Directory**] ブレードで [**ユーザー**] をクリックします。
+
+    ![[管理] の下で [ユーザー] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image130.png "[Azure Active Directory] ブレード")
+
+6. [**+ 新しいユーザー**] を選択して新規ユーザーを追加します。
+
+    ![[Azure Active Directory] ブレードで [+ 新しいユーザー] ボタンが赤で囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image131.png "[Azure Active Directory] ブレード")
+
+7. [**ユーザー**] ブレードでユーザーの**氏名**と**ユーザー名**を指定します。[**ユーザー名**] フィールドでは、Azure AD テナントで使用するドメイン名を指定します。例: *tbaker@\[your tenant\].onmicrosoft.com*.
+
+    ![[ユーザー] ブレードで、前の手順で定義した 2 つのフィールド ([氏名] と [ユーザー名]) が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image132.png "[ユーザー] ブレード")
+
+8. [**パスワードを表示**] チェックボックスをオンにして、後で使用するためにパスワードをメモしておきます。
+
+    ![[パスワードを表示] チェックボックスがオンになっている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image133.png "[パスワード] セクション")
+
+9. [**作成**] をクリックします。
+
+    ![[作成] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image134.png "[作成] ボタン")
+
+<!--
 ### Task 3: Configure access control for the call center administration Web Application
 
 >**Note**: This task is **optional**, and it is valid only if you have the right to create applications in your Azure AD Tenant.
@@ -950,6 +1791,67 @@ The Contoso call center admin application will only be accessible by users of th
 
     ![Screenshot of the Logged In message.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image146.png "Logged in message") ![Screenshot of the Sign In link.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image147.png "Sign in link")
 
+-->
+### タスク 3: コール センター管理 Web アプリケーションのアクセス制御を構成する<a name="タスク-3:-コール-センター管理-Web-アプリケーションのアクセス制御を構成する"></a>
+
+>**注**: このタスクは**オプション**であり、使用する Azure AD テナントでアプリケーション作成権限を所有している場合にのみこのタスクを実施できます。
+
+#### サブタスク 1: Azure AD 認証を有効化する<a name="サブタスク-1:-Azure-AD-認証を有効化する"></a>
+
+
+1. Azure Portal の左側のナビゲーション ウィンドウで [**App Service**] を選択します。
+
+    ![[App Service] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image135.png "[App Service] ボタン")
+
+2. [**App Service**] ブレードで**コール センター管理 Web アプリ**を選択します。
+
+    ![[App Service] ブレードの [名前] で contososportscallcentercp が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image136.png "[App Service] ブレード")
+
+3. [**認証/承認**] タイルを選択します。
+
+    ![[App Service] ブレードの [設定] で [認証/承認] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image137.png "[App Service] ブレード")
+
+4. [**App Service 認証**] を [**オン**] に変更し、ドロップダウン メニューで [**Azure Active Directory でのログイン**] を選択します。
+
+    ![[認証/承認] セクションに表示されている [App Service 認証] ボタンが [オン] に設定され、[要求が認証されない場合に実行するアクション] ドロップダウン メニューで [Azure Active Directory でのログイン] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image138.png "[認証/承認] セクション")
+
+5. [**Azure Active Directory**] を選択します。
+
+    ![[認証プロバイダー] セクションで [Azure Active Directory (未構成)] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image139.png "[認証プロバイダー] セクション")
+
+6. [**Azure Active Directory の設定**] ブレードで [**管理モード**] を [**簡易**] に変更します。
+
+    ![[Azure Active Directory の設定] ブレード下部の [管理モード] が [簡易] に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image140.png "[Azure Active Directory の設定] ブレード")
+
+7. [**OK**] を選択します。
+
+    ![[OK] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image141.png "[OK] ボタン")
+
+8. [**要求が認証されない場合に実行するアクション**] オプションを [**Azure Active Directory でのログイン**] に変更します。
+
+    ![[要求が認証されない場合に実行するアクション] フィールドが [Azure Active Directory でのログイン] に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image142.png "[実行するアクション] フィールド")
+
+9. [**認証/承認**] ブレードで [**保存**] をクリックします。
+
+    ![[App Service] ブレードの [保存] ボタンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image143.png "[App Service] ブレード")
+
+#### サブタスク 2: コール センター管理 Web サイトへのログオンにアクセス制御が適用されていることを検証する<a name="サブタスク-2:-コール-センター管理-Web-サイトへのログオンにアクセス制御が適用されていることを検証する"></a>
+
+1. いったんブラウザーを閉じてから (または他のブラウザーを) **InPrivate またはシークレット モード**で開きます。**コール センター管理** Web サイトにアクセスします。
+
+2. ブラウザーはブランドが設定されていないアクセス制御ログオン URL にリダイレクトされます。Microsoft アカウント、または前の手順で作成した **Contoso テスト ユーザー**でログオンできます。
+
+    ![マイクロソフトのログイン プロンプト](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image144.png "マイクロソフトのログイン プロンプト")
+
+3. ログオンして**同意書を承認する**と、ブラウザーが Contoso Sports League 管理 Web ページにリダイレクトされます。
+
+    ![Contoso Sports League 管理 Web ページで 1 商品の注文完了が示されている画面](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image145.png "Contoso Sports League 管理 Web ページ")
+
+4. 右上隅に [**ログイン中**] リンクが表示されていることを確認します。構成されていない場合は [**サインイン**] リンクが表示されます。
+
+    ![[ログイン中] メッセージのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image146.png "[ログイン中] メッセージ") ![[サインイン] リンクのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image147.png "[サインイン] リンク")
+
+<!--
 ### Task 4: Apply custom branding for the Azure Active Directory logon page
 
 >**Note**: this task is **optional**, and it is valid only if you are a global administrator on the Azure AD tenant associated with your subscription, and you completed the Enabling Azure AD Premium exercise.
@@ -980,6 +1882,38 @@ The Contoso call center admin application will only be accessible by users of th
 
     ![The Save button is circled on the Configure company branding blade.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image152.png "Configure company branding blade")
 
+-->
+### タスク 4: Azure Active Directory のログオン ページにカスタム ブランディングを適用する<a name="タスク-4:-Azure-Active-Directory-のログオン-ページにカスタム-ブランディングを適用する"></a>
+
+>**注**: このタスクは**オプション**です。自身のサブスクリプションに関連付けられた Azure AD テナントのグローバル管理者であり、「Azure AD Premium 試用版を有効化する」の課題を完了している場合のみこのタスクを実施できます。
+
+1. 新規のタブまたはインスタンスで Azure 管理ポータル (<http://portal.azure.com>) にアクセスします。
+
+2. 左側のナビゲーション メニューで [**Azure Active Directory**] を選択します。
+
+    ![[Azure Active Directory] メニュー オプション](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image123.png "Azure Active Directory")
+
+3. [**Azure Active Directory**] ブレードで [**会社のブランド**] を選択します。
+
+    ![[Azure Active Directory] ブレードで [会社のブランド] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image148.png "[Azure Active Directory] ブレード")
+
+4. [**構成...**] 情報ボックスを選択します。
+
+    ![[会社のブランドを構成する] リンクが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image149.png "[会社のブランドを構成する] リンク")
+
+5. [**会社のブランドを構成する**] ブレードで、**サインイン ページの画像**として `C:\MCW` フォルダー内の `default_signin_illustration.jpg` という画像を選択します。
+
+    ![[会社のブランドを構成する] ブレードに Contoso sports league という文字と自転車に乗っている人の写真があしらわれた既定のサインイン画像が表示されている。その下の [ファイルを選択] フィールドと参照アイコンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image150.png "[会社のブランドを構成する] ブレード")
+
+6. 提供されたファイルの中から `logo-60-280.png` を**バナー画像**として選択します。
+
+    ![Contoso sports league というバナー テキストが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image151.png "Contoso sports league のバナー")
+
+7. [**保存**] をクリックします。
+
+    ![[会社のブランドを構成する] ブレードで [保存] ボタンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image152.png "[会社のブランドを構成する] ブレード")
+
+<!--
 ### Task 5: Verify the branding has been successfully applied to the Azure Active Directory logon page
 
 1. Close any previously authenticated browser sessions to the call center administration website, reopen using InPrivate or Incognito mode, and navigate to the **call center administration** website.
@@ -998,6 +1932,26 @@ The Contoso call center admin application will only be accessible by users of th
 
     >**Note**: If you run the app using localhost, ensure connection strings within all the appsettings.json files in the solution have the placeholders removed with actual values. Search on appsettings.json in the Visual Studio Solution Explorer to come up with the list.
 
+-->
+### タスク 5: Azure Active Directory のログオン ページにブランディングが正常に適用されていることを検証する<a name="タスク-5:-Azure-Active-Directory-のログオン-ページにブランディングが正常に適用されていることを検証する"></a>
+
+1. これまでに開いた、コール センター管理 Web サイトの認証を受けたブラウザー セッションをすべて閉じ、InPrivate またはシークレット モードで再起動して、**コール センター管理** Web サイトにアクセスします。
+
+2. ブラウザーはブランドが適用されたアクセス制御ログオン URL にリダイレクトされます。
+
+    ![InPrivate またはシークレット モードのブラウザーで表示されたコール センター管理 Web サイトのサインイン ページ](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image153.png "コール センター管理 Web サイト")
+
+3. ログオンすると、ブラウザーが Contoso Sports League 管理 Web ページにリダイレクトされます。
+
+    ![Contoso Sports League 管理 Web ページで 1 商品の注文完了が示されている画面](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image145.png "Contoso Sports League 管理 Web ページ")
+
+4. 右上隅に [**ログイン中**] リンクが表示されていることを確認します。
+
+    ![[ログイン中] メッセージのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image146.png "[ログイン中] メッセージ")
+
+    >**注**: ローカル ホストでアプリを実行する場合、ソリューションのすべての appsettings.json ファイルに含まれる接続文字列のプレースホルダーが実際の値に変更されていることを確認します。Visual Studio ソリューション エクスプローラーで appsettings.json を検索して、リストを確認します。
+
+<!--
 ## Exercise 3: Enable Azure B2C for customer site
 
 Duration: 75 minutes
@@ -1486,6 +2440,494 @@ When you authenticate users by using OpenID Connect, Azure AD returns an ID toke
     Claims information page:    
     ![On the Contoso website, the following links are circled: Russell, Sign out, and Edit Profile.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image183.png "Contoso website, Claims information page")
 
+-->
+## 演習 3: 顧客サイト用 Azure B2C を有効化する<a name="演習-3:-顧客サイト用-Azure-B2C-を有効化する"></a>
+
+時間: 75 分
+
+この演習では、Azure AD Business to Consumer (B2C) インスタンスを構成し、Contoso の eコマース サイトの認証、サインインおよびサインアウトのポリシー、プロファイル ポリシーを有効化します。
+
+### タスク 1: ディレクトリを新規作成する<a name="タスク-1:-ディレクトリを新規作成する"></a>
+
+1. 所有している Azure サブスクリプションを使用するか、または無料試用版で Azure Portal にログインします。左側のナビゲーション メニューで [**+リソースの作成**] を選択します。次に **Azure Active Directory B2C** を検索して選択し、ポップアップした新規ブレードで [**作成**] をクリックします。
+
+    ![[すべて] ブレードの [検索] フィールドに「Active Directory B2C」と入力されており、[結果] に Azure Active Directory B2C が表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image156.png "[すべて] ブレード")
+
+2. 新規ブレードで [**新しい Azure AD B2C テナントを作成する**] を選択します。次に、「**ContosoB2C**」という名前と一意のドメイン名を入力し、リージョンを選択します。その後、[**作成**] をクリックします。ディレクトリが作成されたら、[**新規ディレクトリを管理するにはここをクリック**] という新しい情報タイルのリンクを選択します。
+
+    ![Azure Portal の [新しい B2C テナントの作成または既存のテナントへのリンク] で [新しい Azure AD B2C テナントを作成する] が選択されている。右側の「新規ディレクトリを管理するにはここをクリック」というメッセージの中のリンク部分の「ここ」が赤で囲まれている](media/2019-03-28-09-29-30.png "Azure Portal")
+
+    ![Azure Portal の [新しい B2C テナントの作成または既存のテナントへのリンク] で [新しい Azure AD B2C テナントを作成する] が選択されている。右側の「新規ディレクトリを管理するにはここをクリック」というメッセージの中のリンク部分の [\"ここ\"] が赤で囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image157.png "Azure Portal")
+
+3. オレンジ色の「**サブスクリプションがありません**」というメッセージを選択し、有効なサブスクリプションにリンクする方法を確認します。
+
+    ![Azure Portal の左側の「この B2C テナントにリンクされたサブスクリプションがありません。サブスクリプションを確認してください。」というメッセージが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image158.png "Azure Portal")
+
+    ![B2C テナントから Azure サブスクリプションへのリンクを作成する 3 つの手順が囲まれている](media/2019-08-25-17-45-26.png "Azure Portal")
+
+    >**注**: 原則的には、前の Azure AD テナントに戻り、Azure AD B2C 作成ウィザードを再び開始する必要があります。
+
+4. [**既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする**] をクリックし、先ほど作成したテナントをドロップダウン リストから選択し、既存のリソース グループの **contososports** を指定します。その後、[**作成**] をクリックします。
+
+    ![[新しい B2C テナントの作成または既存のテナントへのリンク] ブレードの左側では [既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする] が選択されている。右側の [Azure AD B2C リソース] ブレードの [Azure AD B2C テナント] ドロップダウン リストでは contosodb2ccustsitecp.onmicrosoft.com が選択されている。このリソース グループでは、既存の contososports が使用される](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image159.png "新しい B2C テナントの作成または既存のテナントへのリンク")
+
+5. 作成が完了したら、左側のナビゲーション メニューで [**リソース グループ**]、**contososports** の順に選択して新しい Azure AD B2C テナントを開きます。次に、作成した B2C テナントを新しく開いたブレードで選択します。
+
+    ![contososports リソース グループの新しい B2C テナントが赤で囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/b2ctenant_in_rg.png "[Azure AD B2C の設定] ウィンドウ")
+
+6. 新しく開いたブレードで、新規作成した B2C テナントの [**B2C の設定**] タイルを選択します。このテナントで使用される新しいサブスクリプションに移動します。
+
+    ![[Azure AD B2C テナント] ウィンドウ左側の [すべての設定] が選択されている。右下のセクションでは [Azure AD B2C の設定] タイルが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image160.png "[Azure AD B2C の設定] ウィンドウ")
+
+7. 新しく開いたタブの [**管理**] メニューで、[**Azure AD B2C**] ブレード、[**アプリケーション**] の順に選択します。次に、新しいウィンドウで [**+追加**] をクリックします。
+
+    ![[Azure AD B2C の設定] ウィンドウ左側の [すべての設定] が選択されている。中央の [設定]、[管理] で [アプリケーション] が選択されている。右側のセクションでは [追加] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/b2c-add-app-link.png "[Azure AD B2C の設定] ウィンドウ")
+
+### タスク 2: アプリケーションを新規作成する<a name="タスク-2:-アプリケーションを新規作成する"></a>
+
+1. Web アプリの以下の構成オプションを指定します。
+
+   - 名前: **Contoso B2C Application**
+
+   - Web アプリ/Web API を含める: **はい**
+
+   - 暗黙的フローを許可する: **はい**
+
+   - 応答 URL: `https://[your web url].azurewebsites.net/signin-oidc-b2c` (Contoso の eコマース Web サイトの HTTPS プロトコルの URL を指定)
+
+   ![[新しいアプリケーション] フィールドが先に定義された値に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image161.png "新しいアプリケーション")
+
+2. [**作成**] をクリックします。
+
+3. 後で使用するため、[**アプリケーション**] 画面の [**Azure AD B2C**] ブレードに戻って、新しいアプリケーションのアプリケーション ID をメモ帳にコピーします。このタブは次のタスクでも使用するため、開いたままにしておきます。
+
+     ![B2C アプリケーションの名前と ID の値が表示されている](media/2019-04-11-08-36-28.png "[Azure AD B2C] 画面")
+
+### タスク 3: サインアップとサインインのポリシーを作成する<a name="タスク-3:-サインアップとサインインのポリシーを作成する"></a>
+
+1. 前のタスクで開いた [**Azure AD B2C**] ブレードに戻ります。
+
+2. アプリケーションにサインアップできるようにするためには、サインアップ ポリシーを作成する必要があります。このポリシーは、一般ユーザーがサインアップするときのユーザー エクスペリエンスと、サインアップ完了時にアプリケーションに送られるトークンの内容を示します。左側のメニューの [**ユーザー フロー**] リンクを選択し、ブレード上部の [**+新しいユーザー フロー**] をクリックします。
+
+    ![Azure Portal の左側で [Azure AD B2C]、[ユーザー フロー] の順に選択](media/2019-03-28-12-17-22.png "[Azure AD B2C]、[ユーザー フロー] の順に選択")
+
+3. [**サインアップとサインイン**] リンクを選択します。
+  
+    ![大多数のアプリケーションに推奨される結果が表示されている。[サインアップとサインイン] リンクが強調表示されている](media/2019-03-28-12-20-42.png "[サインアップとサインイン] リンク")
+
+4. [**名前**] フィールドに「**SignUp**」と入力します。
+
+    ![一意の Azure AD B2C ユーザー フロー名が表示されている](media/2019-04-11-08-40-58.png "ユーザー フロー名")
+
+5. [**ID プロバイダー**]、[**電子メールのサインアップ**] の順に選択します。任意で、ソーシャル ID プロバイダーを選択することもできます (テナントで事前に構成されている場合)。[**OK**] を選択します。
+
+    ![[ポリシーの追加] ブレードで ID プロバイダーが選択されている。[ID プロバイダーの選択] ブレードで [電子メールのサインアップ] が選択されている](media/2019-03-28-12-25-35.png "[ポリシーの追加] の [ID プロバイダーの選択] ブレード")
+
+6. [**多要素認証**] を [**無効**] に設定します。
+
+7. [**ユーザー属性と要求**] で次のように操作します。
+    - [**さらに表示する...**] リンクを選択します。
+
+    ![[Azure AD B2C - ユーザー フロー (ポリシー)] の [ユーザー フローを作成する] ウィンドウで、既定のユーザー属性と要求の後に [さらに表示する] リンクが強調表示されている](media/2019-03-28-12-38-39.png "[さらに表示する] リンク")
+
+8. [**属性を収集する**] には以下を指定します。
+
+    - **国/地域**
+    - **表示名**
+    - **郵便番号**
+
+9. [**要求を返す**] には以下を指定します。
+
+    - **表示名**
+    - **ID プロバイダー**
+    - **郵便番号**
+    - **新しいユーザー**
+    - **ユーザーのオブジェクト ID**
+  
+10. 選択内容を確認して [**OK**] をクリックします。
+
+    ![[Azure AD B2C - ユーザー フロー] の [属性を収集する] 列と [要求を返す] 列を確認する](media/2019-03-28-12-44-04.png "属性の収集と要求の応答")
+
+11. [**作成**] をクリックします。先ほど作成したポリシーが [**サインアップ ポリシー**] ブレードに **B2C\_1\_SignUp** (**B2C\_1\_** の部分は自動的に追加) という名前で表示されていることを確認します。
+
+    >**注**: ポリシー作成後このページの更新や読み込みには数分程度かかります。
+
+    ![[Azure AD B2C - ユーザー フロー] のリスト。  新規作成されたフローが表示されている](media/2019-03-28-12-46-48.png "[Azure AD B2C - ユーザー フロー] のリスト")
+
+12. リストから **B2C\_1\_SignUp** などを選択すると、ポリシーが開きます。
+
+13. [**ユーザー フローを実行します**] を選択すると、ダイアログが表示されます。
+    ![ポリシー セクションでサインイン ポリシーが選択されている](media/2019-03-28-12-52-27.png "ポリシー セクション")
+
+14. [**ユーザー フローを実行します**] を選択し、アプリケーションを指定してユーザー フローを実行します。 
+
+    ![アプリケーション選択オプションが表示されている。Contoso B2C Application というオプションが選択されている。[ユーザー フローを実行します] ボタンが表示されている](media/2019-03-28-12-55-51.png "ユーザー フローのテスト")
+
+15. ブラウザーのタブまたはウィンドウに以下のスクリーンショットのような画面が表示されます。
+
+    ![ユーザー フローのテスト。  ブラウザーにサンプルのサインイン情報が表示されている](media/2019-03-28-13-00-01.png "ユーザー フローのテスト")
+    
+16. [**今すぐサインアップ**] を選択します。
+
+    ![[今すぐサインアップ] フィールドが表示されている](media/2019-03-28-13-02-25.png "[今すぐサインアップ]")
+
+### タスク 4: プロファイル編集ポリシーを作成する<a name="タスク-4:-プロファイル編集ポリシーを作成する"></a>
+
+アプリケーションでプロファイルを編集できるようにするためには、プロファイル編集ポリシーを作成する必要があります。このポリシーは、一般ユーザーがプロファイルを編集するときのユーザー エクスペリエンスと、編集完了時にアプリケーションに送られるトークンの内容を示します。
+
+1. 左側のブレードの [**ユーザー フロー**] リンクを選択します。
+
+2. ブレード上部の [**+ 新しいユーザー フロー**] リンクを選択します。
+
+3. [**すべて**] タブ リンクを選択します。
+
+    ![[ユーザー フローを作成する] ウィンドウが表示されている。  [すべて] タブが選択されている。すべてのユーザー フローが表示されている。[プロファイルの編集] が矢印で指し示されている](media/2019-03-28-16-19-55.png "[プロファイルの編集] を選択")
+
+4. [**プロファイルの編集**] を選択します。
+
+5. [名前] フィールドに、アプリケーションで使用されるプロファイル編集ポリシー名を入力します。ここでは「**EditProfile**」と入力します。
+
+    ![[ポリシーの追加] ブレードで ID プロバイダー (1 つが選択されている) が選択されている。[ID プロバイダー] では [ローカル アカウント サインイン] が選択されている](media/2019-03-28-16-24-26.png "[ローカル アカウント サインイン] を選択")
+
+6. [ID プロバイダー]、[**ローカル アカウント サインイン**] の順に選択します。
+
+7. [**さらに表示する...**] リンクを選択します。
+
+8. [**属性を収集する**] を選択します。ここでは、ユーザーが表示や編集をできるようにする属性を選択します。
+
+    今回は以下の項目を選択します。
+
+    - **国/地域**
+    - **表示名**
+    - **役職**
+    - **郵便番号**
+    - **都道府県**
+    - **番地**
+
+9. [**要求を返す**] を選択します。選択した要求は、プロファイル編集完了時にアプリケーションに送り返されるトークンとして戻されます。
+
+    今回は以下の項目を選択します。
+
+    - **表示名**
+    - **郵便番号**
+
+    ![[サインアップ] のユーザー属性選択ブレード](media/2019-03-28-16-28-53.png "[サインアップ] のユーザー属性選択ブレード")
+
+10. [**OK**] を選択します。
+
+11. [**作成**] をクリックします。先ほど作成したポリシーが [**プロファイル編集ポリシー**] ブレードに **B2C\_1\_EditProfile** \(**B2C\_1\_** の部分は自動的に追加) という名前で表示されていることを確認します。
+
+12. **B2C\_1\_EditProfile** を選択してポリシーを開き、[**ユーザー フローを実行する**] をクリックします。
+
+13. [**アプリケーションの選択**] ドロップダウン リストで **Contoso B2C application** を選択します。
+
+14. [**ユーザー フローを実行する**] をクリックします。ブラウザーの新規タブを開くと、アプリケーションのプロファイル編集の一般ユーザー用エクスペリエンスを実行できます。
+
+### タスク 5: パスワード リセット ポリシーを作成する<a name="タスク-5:-パスワード-リセット-ポリシーを作成する"></a>
+
+アプリケーションでプロファイルを編集できるようにするためには、プロファイルのパスワード リセットポリシーを作成する必要があります。このポリシーは、一般ユーザーがパスワードをリセットするときのユーザー エクスペリエンスと、リセット完了時にアプリケーションに送られるトークンの内容を示します。
+
+1. 左側のブレードの [**ユーザー フロー**] リンクを選択します。
+
+2. ブレード上部の [**+ 新しいユーザー フロー**] リンクを選択します。
+
+3. [**パスワードのリセット**] を選択します。
+
+    ![[ユーザー フローを作成する] ウィンドウが表示されている。  [推奨] タブが選択されている。[パスワードのリセット] が強調表示されている](media/2020/03/19-09-47-15.png "[パスワードのリセット] を選択")
+
+4. [名前] フィールドに、アプリケーションで使用されるプロファイル編集ポリシー名を入力します。ここでは「**SSPR**」と入力します。
+
+    ![[ポリシーの追加] ブレードで ID プロバイダー (1 つが選択されている) が選択されている [ID プロバイダー] では [電子メール アドレスを使用したパスワードのリセット] が選択されている](media/2020-03-19-09-50-24.png "[電子メール アドレスを使用したパスワードのリセット] を選択")
+
+5. ID プロバイダーを選択してから [**電子メール アドレスを使用したパスワードのリセット**] を選択します。
+
+6. [**さらに表示する...**] リンクを選択します。
+
+7. [**要求を返す**] を選択します。ここで選択したユーザー属性は、トークンでアプリケーションに返されます。
+
+    ここでは以下の項目を選択します。
+
+    - **電子メール アドレス**
+    - **名**
+
+    ![[要求を返す] の属性選択ブレード](media/2020-03-19-09-54-28.png "[要求を返す]")
+
+8. [**OK**] を選択します。
+
+9. [**作成**] をクリックします。作成されたポリシーが [**プロファイル編集ポリシー**] ブレードに **B2C\_1\_SSPR** \(**B2C\_1\_** の部分は自動的に追加) という名前で表示されていることを確認します。
+
+10. **B2C\_1\_SSPR** を選択してポリシーを開き、[**ユーザー フローを実行する**] をクリックします。
+
+11. [**アプリケーションの選択**] ドロップダウン リストで **Contoso B2C application** を選択します。
+
+12. [**ユーザー フローを実行する**] をクリックします。ブラウザーの新規タブを開くと、アプリケーションのプロファイル編集の一般ユーザー用エクスペリエンスを実行できます。
+
+### タスク 6: Contoso.App.SportsLeague.Web を変更する<a name="タスク-6:-Contoso.App.SportsLeague.Web-を変更する"></a>
+
+1. **Contoso.Apps.SportsLeague.Web** プロジェクトを展開します。**Startup.cs** というコード ファイルで `public void ConfigureServices(` メソッド宣言を探し、メソッド末尾に次のコード行を追加します。
+
+    ```csharp
+    services.AddAuthentication(Microsoft.AspNetCore.Authentication.AzureADB2C.UI.AzureADB2CDefaults.AuthenticationScheme)
+                .AddAzureADB2C(options => Configuration.Bind("AzureADB2C", options));
+    ```
+
+    ![Startup.cs ファイルの "AddAuthentication();" の部分が強調表示されている](media/2019-04-19-15-08-40.png "Startup.cs")
+
+2. 次の `using` ディレクティブを **Startup.cs** コード ファイルの冒頭に追加します。
+
+    ```
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
+    ```
+
+3. `public void Configure` メソッドの `app.UseAuthentication();` という行を探し、その後に以下の行を追加します。
+
+    ```
+    app.UseAuthentication();
+    app.UseAuthorization();
+    ```
+
+    上記の手順の結果、以下のようになります。
+
+    ![app.UseAuthentication というコードが挿入されている](media/2020-03-18-14-44-13.png "app.UseAuthentication というコードの挿入")
+
+4. リソース グループから Azure AD B2C の名前を探します。その名前をメモ帳にコピーします。
+
+    ![ContosoSports リソース グループ内のすべてのリソースのリスト。B2C のテナント名が矢印で指し示されている](media/2019-03-28-16-51-14.png "B2C のテナント名を探す")
+
+5. 次に、Azure 管理ポータルからメインのサブスクリプションを使用して Contoso Web アプリのブレードを開き、[**構成**] を選択します。
+
+6. [**アプリケーション設定**] セクションで、以下のように設定します。
+
+   - AzureADB2C:Instance - `https://[your Azure AD B2C name].b2clogin.com/tfp/`.
+   - AzureADB2C:ClientId - **先にコピーした B2C アプリケーションの ID**
+   - AzureADB2C:CallbackPath - `/signin-oidc-b2c`
+   - AzureADB2C:Domain - **[使用する Azure AD B2C 名].onmicrosoft.com**.
+   - AzureADB2C:SignUpSignInPolicyId - `B2C_1_SignUp`
+   - AzureADB2C:ResetPasswordPolicyId - `B2C_1_SSPR`
+   - AzureADB2C:EditProfilePolicyId - `B2C_1_EditProfile`
+
+7. 設定が完了したら [**保存**] をクリックします。
+
+### タスク 7: 認証要求を Azure AD に送信する<a name="タスク-7:-認証要求を-Azure-AD-に送信する"></a>
+
+アプリケーションが正しく構成され、ASP.NET Core Identity を使用して Azure AD B2C と通信できるようになりました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの保持などの詳細はすべて OWIN が担当します。あとは各ユーザーのフローを開始するだけです。
+
+1. **Controllers** フォルダー、[**追加**]、[**コントローラー**] の順に選択します。
+
+    ![ソリューション エクスプローラーで Controllers フォルダーの右クリック メニューから [追加] が選択され、さらにそのメニューから [コントローラー] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image177.png "ソリューション エクスプローラー")
+
+2. [**MVC コントローラー - 空**]、[**追加**] の順に選択します。[**コントローラーの追加**] ダイアログ ボックスで **DefaultController** の値を **AccountController** に変更します。
+
+    ![[スキャフォールディングを追加] ウィンドウの左側で [インストール済み]、[コントローラー] が選択されている。ウィンドウ中央では [MVC コントローラー - 空] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image178.png "[スキャフォールディングを追加] ウィンドウ")
+
+3. 以下の using 文をコントローラーの冒頭に追加します。
+
+    ```csharp
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    ```
+
+4. 既定のコントローラーの **Index** メソッドを探します。
+
+    ![既定のコントローラーの Index メソッドが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image179.png "既定のコントローラーの Index")
+
+    このメソッドを以下のコードに変更し、[**保存**] をクリックしてファイルを保存します。
+
+    ```csharp
+    // Controllers\AccountController.cs
+
+    private string _editProfilePolicyId;
+
+    public AccountController(IConfiguration configuration)
+    {
+        _editProfilePolicyId = configuration.GetValue<string>("AzureADB2C:EditProfilePolicyId");
+    }
+
+    public ActionResult SignIn()
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Challenge(new AuthenticationProperties() { RedirectUri = "/" }, AzureADB2CDefaults.AuthenticationScheme);
+        }
+        return RedirectToAction("Index", "Home");
+    }
+            
+    public ActionResult SignUp()
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Challenge(new AuthenticationProperties() { RedirectUri = "/" }, AzureADB2CDefaults.AuthenticationScheme);
+        }
+        return RedirectToAction("Index", "Home");
+    }
+
+    public ActionResult Profile()
+    {
+        if (User.Identity.IsAuthenticated)
+        {
+                var properties = new AuthenticationProperties() { RedirectUri = "/" };
+                properties.Items[AzureADB2CDefaults.PolicyKey] = _editProfilePolicyId;
+                return Challenge(
+                    properties,
+                    AzureADB2CDefaults.AuthenticationScheme);
+        }
+        return RedirectToAction("Index", "Home");
+    }
+
+    public ActionResult SignOut()
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        string redirectUri = Url.Action("Index", "Home", null, Request.Scheme);
+        var properties = new AuthenticationProperties
+        {
+            RedirectUri = redirectUri
+        };
+        return SignOut(properties, AzureADB2CDefaults.CookieScheme, AzureADB2CDefaults.OpenIdScheme);
+    }
+    ```
+
+5. ファイルを保存します。
+
+### タスク 8: ユーザー情報を表示する<a name="タスク-8:-ユーザー情報を表示する"></a>
+
+ユーザー認証に OpenID Connect を使用する場合、Azure AD は**要求**を含む ID トークンをアプリケーションに返します。これは、ユーザーに関するアサーションです。要求は、アプリケーションのパーソナライズに使用できます。コントローラーに含まれるユーザーの要求には、ClaimsPrincipal.Current セキュリティ プリンシパル オブジェクトでアクセスできます。
+
+1. **Controllers\\HomeController.cs** ファイルを開き、ファイル冒頭部分の using 文の後に以下の using 文を追加します。
+
+    ```csharp
+    using Contoso.Apps.SportsLeague.Web.Models;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    ```
+
+2. さらに、**Controllers\\HomeController.cs** ファイルの **HomeController** クラスに以下のメソッドを追加します。
+
+    ```csharp
+    [Authorize]
+    public ActionResult Claims()
+    {
+        var displayName = User.Identity.Name;
+        ViewBag.DisplayName = displayName;
+        ViewBag.Claims = User.Claims;
+        return View();
+    }
+    ```
+
+3. 同じ方法で、アプリケーションに送られるあらゆる要求にアクセスできます。アプリケーションに送られる要求がすべて掲載されたリストは、[**要求**] ページで確認できます。Visual Studio で Contoso.Apps.SportsLeague.Web オブジェクトを表示し、右クリックして [**ビュー**]、**Home** フォルダー、[**追加**]、[**ビュー**] の順に選択し、「**Claims**」と命名します。  [**OK**] を選択します。
+
+    ![ソリューション エクスプローラーの右クリック メニューで [ビュー]、Home フォルダー、[追加] の順に選択され、[ビュー] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image180.png "ソリューション エクスプローラー")
+
+4. **Claims.cshtml** ファイルを開き、コードを以下のように変更します。
+
+    ```csharp
+    @using System.Security.Claims
+    @{
+        ViewBag.Title = "Claims";
+    }
+    <h2>@ViewBag.Title</h2>
+
+    <h4>Claims Present in the Claims Identity: @ViewBag.DisplayName</h4>
+
+    <table class="table-hover claim-table">
+        <tr>
+            <th class="claim-type claim-data claim-head">Claim Type</th>
+            <th class="claim-data claim-head">Claim Value</th>
+        </tr>
+
+        @foreach (Claim claim in ViewBag.Claims)
+        {
+            <tr>
+                <td class="claim-type claim-data">@claim.Type</td>
+                <td class="claim-data">@claim.Value</td>
+            </tr>
+        }
+    </table>
+    ```
+
+5. [**ビュー**] を右クリックして **Shared** フォルダー、[**追加**] を選択し、[**ビュー**] を新規追加して、[**部分ビューとして作成する**] に設定します。「**\_LoginPartial**」と命名します。
+
+    ![ソリューション エクスプローラーの右クリック メニューで [ビュー]、Shared フォルダー、[追加] の順に選択され、[ビュー] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image180.png "ソリューション エクスプローラー")
+
+    ![[部分ビューとして作成する] が強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image180-b.png "MVC ビューの追加")
+
+6. Razor の部分ビューに以下のコードを追加し、サインイン、サインアウト、ユーザー プロファイル編集のリンクを作成します。
+
+    ```html
+    @if (User.Identity.IsAuthenticated)
+    {
+        <text>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a id="profile-link">@User.Identity.Name</a>
+                    <div id="profile-options" class="nav navbar-nav navbar-right">
+                        <ul class="profile-links">
+                            <li class="profile-link">
+                                @Html.ActionLink("Edit Profile", "Profile", "Account")
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    @Html.ActionLink("Sign out", "SignOut", "Account")
+                </li>
+            </ul>
+        </text>
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { id = "signUpLink" })</li>
+            <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }
+    ```
+
+7. Visual Studio で [**ビュー**]、**Shared** フォルダー、**_Layout.cshtml** の順に選択します。header-top div を検索し、**@Html.ActionLink** から始まる行、および **@Html.Partial** から始まる行を追加します。
+
+    ```html
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-left">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+                <div class="header-top-right">
+                    <a href="#" class="top-wrap"><span class="icon-phone">Call today: </span> (555) 555-8000</a>
+                    @Html.ActionLink("Claims", "Claims", "Home")
+                </div>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    ```
+
+### タスク 9: サンプル アプリを実行する<a name="タスク-9:-サンプル-アプリを実行する"></a>
+
+1. **Contoso.Apps.SportsLeague.Web** プロジェクトを右クリックして [**発行**] を選択します。以下の手順で、更新したアプリケーションを Microsoft Azure Web Apps にデプロイします。
+
+    Visual Studio 外部でブラウザーを起動し、ページが Visual Studio に読み込まれるかどうかをテストします。
+
+2. サインアップ テストを行います。
+
+3. 次に、サインアウト テストを行います。
+
+4. サインインしていない状態で [要求] を選択すると、サインイン ページに移動し、その後に要求の情報が表示されます。サインインしてプロファイル編集のテストを行います。
+
+    ![Contoso の Web サイトで [要求]、[サインアップ]、[サインイン] のリンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image182.png "Contoso の Web サイト")
+
+    要求情報ページは以下のようになります。![Contoso の Web サイトで [Russell]、[サインイン]、[サインアウト]、[プロファイルの編集] が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image183.png "Contoso の Web サイト、要求情報ページ")
+
+<!--
 ## Exercise 4: Enabling Telemetry with Application Insights
 
 Duration: 30 Minutes
@@ -1690,6 +3132,211 @@ To configure the application for logging and diagnostics, you have been asked to
 
     ![In the Custom events section, event metrics are displayed for users and sessions. Different web pages are listed. e.g. OrderCompleted and SuccessfulPaymentAuth.](media/2019-03-29-11-35-33.png "Event Statistics")
 
+-->
+## 演習 4: Application Insights でテレメトリを有効化する<a name="演習-4:-Application-Insights-でテレメトリを有効化する"></a>
+
+アプリケーションでログの記録や診断を行う場合、Microsoft Azure Application Insights を構成し、カスタム テレメトリをいくつか追加する必要があります。
+
+### タスク 1: アプリケーションでテレメトリを構成する<a name="タスク-1:-アプリケーションでテレメトリを構成する"></a>
+
+#### サブタスク 1: eコマース Web サイト プロジェクトに Application Insights Telemetry を追加する<a name="サブタスク-1:-eコマース-Web-サイト-プロジェクトに-Application-Insights-Telemetry-を追加する"></a>
+
+1. Visual Studio で **Contoso.Apps.SportsLeague** というソリューションを開きます。
+
+2. Visual Studio の**ソリューション エクスプローラー**で **Web** フォルダーの **Contoso.Apps.SportsLeague.Web** プロジェクトに移動します。
+
+3. **Contoso.Apps.SportsLeague.Web** プロジェクトを展開し、[**相互関係**] ノードを右クリックして [**NuGet パッケージの管理...**] を選択します。
+
+4. **NuGet パッケージ マネージャー**で [**参照**] タブを選択し、以下の NuGet パッケージを検索してインストールします。
+
+    - **Microsoft.ApplicationInsights**
+    - **Microsoft.ApplicationInsights.Web**
+
+5. **Contoso.Apps.SportsLeague.Web** プロジェクトの `\Helpers\TelemetryHelper.cs` ファイルを開きます。
+
+6. 以下の using 文をファイルの冒頭に追加します。
+
+    ```csharp
+    using Microsoft.ApplicationInsights;
+    ```
+
+7. **TrackException** メソッドに以下のコードを追加します。このコードはテレメトリ クライアントのインスタンス化と例外の追跡を実行します。
+
+    ```csharp
+    var client = new TelemetryClient();
+    client.TrackException(new Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry(exc));
+    ```
+
+8. **TrackEvent** メソッドに以下のコードを追加します。このコードはテレメトリ クライアントのインスタンス化とイベント データの追跡を実行します。
+
+    ```csharp
+    var client = new TelemetryClient();
+    client.TrackEvent(eventName, properties);
+    ```
+
+9. `TelemetryHelper.cs` ファイルを保存します。
+
+#### サブタスク 2: クライアント側のテレメトリを有効化する<a name="サブタスク-2:-クライアント側のテレメトリを有効化する"></a>
+
+1. Azure 管理ポータル (<http://portal.azure.com>) を開き、**contososports** リソース グループに移動します。
+
+2. Contoso の eコマース サイトに関連付けられている、**contososportsai** で始まる名前の **Application Insights** インスタンスを選択します。
+
+3. **インストルメンテーション キー**を取得します。
+       - [**概要**] メニュー アイテムを選択します。
+       - 後で使用するため、**インストルメンテーション キー**をメモ帳にコピーします。
+
+    ![Contoso.Apps.SportsLeague Application Insights の概要。インストルメンテーション キーが選択されている](media/2019-03-29-10-36-23.png "インストルメンテーション キーが選択されている")
+
+4. 最上部にある [**作業の開始**] タイルを選択します。
+
+    ![[構成] メニューで [作業の開始] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image196.png "[構成] メニュー")
+
+5. ポータルで [**操作方法ガイド**]、[**Application Insights**]、[**コードベースの監視**]、[**Web ページ**]、[**クライアント側の JavaScript**] の順に選択し、ドキュメント ページの「**JavaScript SDK を追加する**」の「**スニペット ベースのセットアップ**」セクションに移動します。
+
+    ![クライアント側アプリケーションの監視と診断の項目を示す矢印のスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image197.png "クライアント側アプリケーションの監視と診断")
+
+    > **注**: このドキュメントは以下の URLからアクセスできます。
+<https://docs.microsoft.com/azure/azure-monitor/app/javascript#snippet-based-setup>
+
+6. 「**スニペット ベースのセットアップ**」という項目に掲載されている JavaScript 全文をコピーします。
+
+    ![クライアント アプリケーションの監視と診断に関するガイドのブレードに JavaScript が表示されている。](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image198.png "クライアント アプリケーションの監視と診断に関するブレード")
+
+    上記の JavaScript コードは、以下からもコピー アンド ペーストできます。
+
+    ```javascript
+    <script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
+    {
+    instrumentationKey:"INSTRUMENTATION_KEY"
+    }
+    );(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+    ```
+
+    >**注**: `INSTRUMENTATION_KEY` というプレースホルダーは、Applicaiton Insights のインストルメンテーション キーに変更します。
+
+7. Visual Studio の**ソリューション エクスプローラー**で **Web** フォルダーの **Contoso.Apps.SportsLeague.Web** プロジェクトに移動します。
+
+8. [**ビュー**]、**Shared** フォルダー、**_Layout.cshtml** の順に選択します。
+
+    ![ソリューション エクスプローラーで [ビュー]、Shared フォルダー、Layout.cshtml が選択されている](media/2019-04-19-15-45-29.png "ソリューション エクスプローラー")
+
+9. コードを `</head>` タグの前に貼り付けます。メモ帳にコピーした**インストルメンテーション キー**を JavaScript コードの ``instrumentationKey:`` の値として挿入します。
+
+    ![Layout.cshtml のコードの中の数行が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image200.png "Layout.cshtml タブ")
+
+10. **\_Layout.cshtml** ファイルを保存します。
+
+#### サブタスク 3: Visual Studio から eコマース Web アプリをデプロイする<a name="サブタスク-3:-Visual-Studio-から-eコマース-Web-アプリをデプロイする"></a>
+
+
+1. Visual Studio の**ソリューション エクスプローラー**で **Web** フォルダーの **Contoso.Apps.SportsLeague.Web** プロジェクトに移動します。
+
+2. **Contoso.Apps.SportsLeague.Web** プロジェクトを右クリックして [**発行**] を選択します。
+
+    ![Contoso.Apps.SportsLeague.Web の右クリック メニューで [発行] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image202.png "ソリューション エクスプローラー")
+
+3. [発行] ダイアログが表示されたら、再度 [**発行**] を選択します。
+
+    Visual Studio にページが読み込まれたら、テスト用のブラウザーを **Visual Studio の外部**で開きます。
+
+4. 発行された eコマース Web サイトで、リンクを選択して注文を何度か行い、テレメトリのサンプルを生成します。
+
+### タスク 2: Web のパフォーマンス テストと負荷テストを作成する<a name="タスク-2:-Web-のパフォーマンス-テストと負荷テストを作成する"></a>
+
+#### サブタスク 1: 負荷テストを作成する<a name="サブタスク-1:-負荷テストを作成する"></a>
+
+1. Azure 管理ポータル (<http://portal.azure.com>) を開き、**contososports** リソース グループに移動します。
+
+2. Contoso の eコマース サイトに関連付けられている、**contososportsai** で始まる名前の **Application Insights** インスタンスを選択します。
+
+3. [**パフォーマンス テスト**] を選択します。
+
+    ![[構成] メニューで [パフォーマンス テスト] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image205.png "[構成] メニュー")
+
+4. [**組織を設定**] ボタンを選択し、Azure DevOps アカウントを関連付けて作成します。
+
+    ![[Application Insights] ブレードで [組織を設定する] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image206.png "[Application Insights] ブレード")
+
+5. [組織の設定] タイルで [**または新規作成**] リンクを選択します。
+
+    ![[組織の設定] タイルで [または新規作成] リンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image207.png "[アカウント] タイル")
+
+6. アカウントに一意の名前を指定し、リージョンを選択します。
+
+    >**注**: このリージョンは、リソースをデプロイしたリージョンとは異なる場合があります。
+
+    ![[組織の設定] ブレードの Azure DevOps アカウントで contososports が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image208.png "[アカウント設定] ブレード")
+
+7. [**サブスクリプション**] で**自身のサブスクリプション**を選択します。
+
+    ![[サブスクリプション] オプションが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image209.png "[サブスクリプション] オプション")
+
+8. [**場所を選択**] をクリックして、場所を指定します。
+
+    ![[場所を選択] オプションが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image210.png "[場所を選択] オプション")
+
+    >**注**: [場所を設定] タイルは、サブスクリプションを設定すると表示されなくなる場合があります。
+
+9. [**OK**] をクリックします。
+
+    >**注**: Azure DevOps アカウントの作成には 1 分程度かかります。
+
+10. [**新規作成**] を選択します。
+
+    ![[Application Insights] ブレードで [新規作成] ボタンが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image211.png "[Application Insights] ブレード")
+
+11. [**次を使用してテストを構成します**] を選択します。
+
+    ![[次を使用してテストを構成します] オプションが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image212.png "[次を使用してテストを構成します] オプション")
+
+12. Contoso の eコマース サイトの **URL** を指定し、[**完了**] をクリックします。
+
+    ![[次を使用してテストを構成します] ブレードで https://contososportsweb3.azurewebsites という URL が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image213.png "[次を使用してテストを構成します] ブレード")
+
+13. テストを「**ContosoSportsTest**」と命名し、[**テストの実行**] ボタンをクリックします。
+
+    ![[新しいパフォーマンス テスト] ブレードの [名前] で ContosoSportsTest が指定されている。最下部の [テストの実行] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image214.png "[新しいパフォーマンス テスト] ブレード")
+
+14. 負荷テストが完了するまで待機します。5 ～ 10 分程度かかります。
+
+    ![[最近の実行] セクションで負荷テスト「ContosoSportsTest」の状態が [完了] と表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image215.png "[最近の実行] セクション")
+
+#### サブタスク 2: Application Insights のログを表示する<a name="サブタスク-2:-Application-Insights-のログを表示する"></a>
+
+1. ブラウザーの新規タブまたは新規インスタンスで Azure 管理ポータル (<http://portal.azure.com>) を開きます。
+
+2. 左側のメニューから [**すべてのサービス**] を選択します。
+
+3. [**すべてのサービス**] ブレードで「**Application Insights**」で検索し、適切な結果を選択します。
+
+4. [**Application Insights**] ブレードで、eコマース Web サイト用に作成した Application Insights の構成を選択します。
+
+    ![Application Insights の構成オプションで Contoso.Apps.SportsLeague.Web が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image216.png "Application Insights の構成オプション")
+
+5. [**アプリケーション ダッシュボード**] を選択します。  パフォーマンスのタイムラインを表示して、要求の合計数とページの読み込み時間を確認します。
+
+    ![Application Insights、Contoso.Apps.SportsLeague.Web の順に選択され、ページ上部の [アプリケーション ダッシュボード] リンクが強調表示されて、矢印で指し示されている。要求の失敗数とサーバー応答のメトリックが表示されている](media/2019-03-29-11-10-04.png "ダッシュボードのリンクをクリックした様子")
+
+    ![Contoso の Web サイトのメトリックが表示されている。使用状況、信頼性、応答性のグラフが表示されている](media/2019-03-29-11-12-13.png "Application Insights の既定のダッシュボード")
+
+6. ``Contoso.Apps.SportsLeague.Web`` の Application Insights の概要に戻ります。[**パフォーマンス**] を選択して、各エンドポイントのレンダリング パフォーマンスを確認します。
+  
+    ![Contoso.Apps.SportsLeague.Web の [パフォーマンス] リンクが選択されている](media/2019-03-29-11-01-14.png "[パフォーマンス] リンクを選択")
+
+    ![Contoso.Apps.SportsLeague.Web の [パフォーマンス] でエンドポイントの各種 HTTP 要求のパフォーマンスのメトリックが表示されている](media/2019-03-29-11-20-06.png "エンドポイントのパフォーマンス")
+
+7. [**使用状況**] リンクで [**イベント**] メニュー オプションを選択します。[**その他の分析情報を表示**] ボタンを選択します。
+
+    ![[使用状況 (プレビュー)] セクションで [イベント] ボタンを選択した場合のスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image218.png "[使用状況 (プレビュー)] セクション")
+
+8. [**その他の分析情報を表示**] を選択し、イベント リストを下方向にスクロールします。
+
+    ![[カスタム イベント] セクションでユーザーおよびセッションの各種メトリックが表示されている。OrderCompleted や SuccessfulPaymentAuth など、複数の Web ページがリストに掲載されている](media/2019-03-29-11-35-33.png "イベントの統計")
+
+<!--
 ## Exercise 5: Automating backend processes with Azure Functions and Logic Apps
 
 Duration: 45 Minutes
@@ -1999,9 +3646,9 @@ The advantages of using Logic Apps include the following:
 
 1. If you do not have a Twilio account, sign up for one for free at the following URL:
 
-[**https://www.twilio.com/try-twilio**](https://www.twilio.com/try-twilio)
+    [**https://www.twilio.com/try-twilio**](https://www.twilio.com/try-twilio)
 
-   ![Screenshot of the Twilio account Sign up for free webpage.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image268.png "Twilio account Sign up webpage")
+    ![Screenshot of the Twilio account Sign up for free webpage.](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image268.png "Twilio account Sign up webpage")
 
 2. Select **All Products & Services**.
 
@@ -2220,3 +3867,533 @@ Duration: 10 minutes
 1. Since the HOL is now complete, go ahead and delete all the Resource Groups that were created for this HOL. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
 
 You should follow all steps provided *after* attending the hands-on lab.
+-->
+
+## 演習 5: Azure Functions と Logic Apps でバックエンド処理を自動化する<a name="演習-5:-Azure-Functions-と-Logic-Apps-でバックエンド処理を自動化する"></a>
+
+Contoso では、Azure Logic Apps と Azure Functions を使用して、注文処理時の PDF 形式の受領書生成とユーザー アラート生成処理を自動化したいと考えています。Logic Apps で C\# や node.js のカスタム スニペットを実行する場合、Azure Functions でカスタム関数を作成できます。[Azure Functions](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-overview) では Microsoft Azure のコンピューティング能力をサーバーレスで使用可能で、以下のようなタスクを実行する場合に便利です。
+
+- Logic Apps で詳細な書式設定やフィールドの演算を行う。
+
+- ワークフロー内での計算を実行する。
+
+- C\# や node.js でサポートされている関数で Logic Apps の機能を拡張する。
+
+### タスク 1: PDF 形式の受領書を生成する Azure 関数を作成する<a name="タスク-1:-PDF-形式の受領書を生成する-Azure-関数を作成する"></a>
+
+1. Azure Portal 左上隅の [**+リソースの作成**] ボタンをクリックし、[**Compute**]、[**Function App**] の順に選択します。下部の [**作成**] ボタンをクリックします。
+
+    ![Azure Portal 左側の [リソースの作成] ボタンが選択されている。中央では [新規] の下の [Compute] が選択されている。右側では [Compute] の [Function App] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image221.png "Azure Portal")
+
+2. 以下の設定で新しい関数アプリをプロビジョニングし、デプロイします。
+
+    - **リソース グループ**: 既存の **contososports** リソース グループを使用します。
+
+    - **関数アプリ名**: _一意の名前を指定します。_
+
+    - **発行**: コード
+
+    - **ランタイム スタック**: .NET Core.
+
+    - **リージョン**: このラボの eコマース Web アプリで使用されている場所と同じリージョンを選択します。
+
+3. [**次へ: ホスティング>**] を選択します。
+
+4. [**ホスティング**] タブで以下の値を選択し、[**確認および作成**] をクリックします。
+
+    - **オペレーティング システム**: Windows
+
+    - **プラン**: App Service プラン
+
+    - **Windows プラン**: eコマース Web アプリで使用する App Service プランを選択します。
+
+5. [**作成**] をクリックします。
+
+6. **contososports** リソース グループのストレージ アカウントに移動し、[**アクセス キー**] を選択して、ストレージ アカウントの**接続文字列**をコピーします。後で使用するため、ストレージ アカウントの接続文字列をメモ帳に貼り付けます。
+
+    ![ストレージ アカウントのリストが表示されている。  [アクセス キー] が指し示されている](media/2019-04-15-15-07-15.png "ストレージ アカウントのアクセス キー")
+
+7. 作成した**関数アプリ**に移動し、[**構成**] を選択します。
+
+    ![Contoso 関数アプリが表示されており、[構成] リンクが強調表示されている](media/2019-04-15-15-15-22.png "Contoso 関数アプリのアプリケーション設定")
+
+8. **アプリケーション設定**を新規追加して以下の値を指定し、[**保存**] をクリックします。
+
+    - **名前**: `contososportsstorage`.
+    - **値**: ストレージ アカウントの接続文字列を入力
+
+    ![関数アプリの更新されたアプリケーション設定。最新の値が表示されている](media/2019-04-15-16-18-36.png "関数アプリの更新されたアプリケーション設定")
+
+9. Visual Studio ソリューション エクスプローラーを開き、**ContosoFunctionApp** プロジェクトを右クリックして [**発行**] をクリックし、関数アプリを発行します。
+
+    ![Visual Studio ソリューション エクスプローラーが開かれている。Contoso 関数アプリのメニューが表示されている。関数アプリの発行が選択されている](media/2019-04-15-15-31-03.png "関数アプリの発行を選択")
+
+10. [**発行先を選択**] ダイアログで [**既存のものを選択**]、[**プロファイルの作成**] の順に選択します。
+
+11. **関数アプリ**を選択してから [**OK**] をクリックします。
+
+    ![Azure 関数アプリ ツリーが表示されている。Contoso 関数アプリが選択されている](media/2019-04-15-15-34-54.png "Azure 関数アプリ ツリーの表示")
+
+12. [**発行**] をクリックします。
+
+    発行は 1 分程度で完了します。エラーが発生する可能性があるため、[**出力**] ウィンドウを確認します。
+
+    ![ビルドの [出力] ウィンドウが表示されている。発行が成功したことを示すメッセージが表示されている](media/2019-04-15-15-33-20.png "[出力] ウィンドウ.")
+
+13. Azure Portal で Contoso 関数アプリに戻り、新たに発行した関数アプリのテストを実行します。関数リストの中から、新しく作成された **ContosoMakePDF** 関数を選択します。
+
+14. 右側のブレードの [**テスト**] リンクをクリックします。
+
+    ![左側に関数アプリのリストが表示されている。ContosoMakePDF が選択されている。  右側のウィンドウの [テスト] リンクが矢印で指し示されている](media/2019-04-15-15-40-27.png "関数の [テスト] リンク")
+
+15. HTTP メソッドから [**POST**] を選択します。
+
+16. ラボ ファイルの Contoso.CreatePDFReport ディレクトリにある **sample.dat** ファイルを開きます。  内容を [**要求本文**] テキスト ボックスにコピーします。
+
+    ![Windows エクスプローラーの一部のスクリーンショット。sample.dat ファイルのパスが示されている](media/2019-04-15-15-47-39.png "Sample.dat ファイル")
+
+17. ブレード下部の [**実行**] ボタンをクリックします。
+
+    ![[テスト] ブレードに sample.dat の内容が示されている。[要求本文] フィールドには JSON 形式の Order 文が示されている。[実行] ボタンが矢印で指し示されている](media/2019-04-15-15-52-59.png "[テスト] ブレードに sample.dat の内容が表示されている様子")
+
+    > **注**: [Azure 関数] ブレード下部にも同様に [**実行**] ボタンがあります。どちらのボタンをクリックしても、同じように関数が実行されます。
+
+    数秒後、以下の画像のようなログが表示されます。ステータス コード 200 が返されていれば成功です。  [**出力**] テキスト ボックスには Contoso の直近の購入データが出力されます。ファイルが作成され、Blob Storage に保存されたことを示すメッセージが表示されます。
+
+    ![関数アプリのテスト結果のログのスクリーンショット。  右側のウィンドウにステータス コード 200 OK が表示されている](media/2019-04-15-15-58-54.png "関数アプリのテスト結果のログ")
+
+18. ストレージ アカウント Blob に保存された PDF 形式の受領書を確認します。
+
+    - ContosoSports のストレージ アカウントに移動します。
+    - [**BLOB**] リンクを選択します。
+
+    ![[設定] オプションが選択されている。[BLOB] リンクが矢印で指し示されている](media/2019-04-15-16-06-17.png "[BLOB] リンク")
+
+19. 新たに作成された **receipts** Blob コンテナーを選択します。
+
+    ![ストレージ アカウント Blob のリストが表示されている。receipts Blob コンテナーが強調表示されている](media/2019-04-15-16-08-35.png "[BLOB] リンクをクリック")
+
+20. [**ContosoSportsLeague-Store-Receipt-XX.pdf**] リンクを開きます。
+
+    ![新たに作成された PDF 形式の受領書のリストが表示されている様子を示すスクリーンショット。右側のウィンドウの [ダウンロード] リンクが矢印で指し示されている](media/2019-04-15-16-11-24.png "PDF 受領書")
+
+    - `...` リンクを開き、ダウンロード メニュー アイテムを選択します。
+
+    ![Contoso Sports League の PDF 受領書のサンプルが表示されている](media/2019-04-15-16-15-06.png "PDF 受領書のサンプル")
+
+### タスク 2: 注文を処理する Azure Logic Apps を作成する<a name="タスク-2:-注文を処理する-Azure-Logic-Apps-を作成する"></a>
+
+Azure Logic Apps でワークフローを作成して実行すると、コードを作成しないでもビジネス プロセスをより簡単にすばやく自動化できます。Logic Apps では、スケーラブルな統合やワークフローをクラウドで簡素化および実装できます。ビジュアル デザイナーを使用すると、ワークフローと呼ばれる一連の手順の処理をモデル化し、自動化できます。クラウドでもオンプレミスでも使用できる[コネクタが多数](https://docs.microsoft.com/ja-jp/azure/connectors/apis-list)用意されていて、サービスやプロトコルをすばやく統合できます。
+
+Logic Apps を使用すると、以下のようなメリットがあります。
+
+- 複雑なプロセスをわかりやすい設計ツールで設計できるため、時間を節約できる。
+
+- コードでは実装が難しいパターンやワークフローをシームレスに実装できる。
+
+- テンプレートを使用してすばやく導入できる。
+
+- 独自のカスタム API、コード、アクションを使用してロジック アプリをカスタマイズできる。
+
+- オンプレミスとクラウドで分断されたシステムを接続して同期できる。
+
+- 最高レベルの統合をサポートする BizTalk サーバー、API 管理、Azure Functions、Azure Service Bus を構築できる。
+
+1. ここからは、**receiptgenerator** キューにアイテムが追加されたときにトリガーとなるロジック アプリを作成します。Azure 管理ポータルで [**+リソースの作成**] ボタンをクリックし、「**Logic App**」を検索します。次にその検索結果を選択し、[**作成**] をクリックします。
+
+    ![Azure Portal の [Marketplace] で [すべて] が選択されている。[すべて] の検索フィールドに「Logic App」と入力されている。[名前] の下の「Logic App」が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image236.png "Azure Portal")
+
+2. サブスクリプション名に合わせて **ContosoLogicApplication** と命名します。リソース グループは既存の **contososports** を使用します。Web アプリとストレージ アカウントで**同一リージョン**を選択します。[**作成**] をクリックします。
+
+    ![[ロジック アプリの作成] ブレードの [名前] フィールドで ContosoLogicApplication が選択されている。[リソース グループ] で [既存のものを使用] ラジオ ボタンが選択されている。名前は contososports](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image237.png "[ロジック アプリの作成] ブレード")
+
+3. デプロイが完了したら、[**すべてのサービス**] を選択してロジック アプリを開きます。「**Logic App**」を検索して選択し、先ほど作成したロジック アプリを選択します。
+
+    ![Azure Portal の検索フィールドに「logic」と入力されており、その下で Logic apps が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image238.png "Azure Portal")
+
+4. [**ロジック アプリ デザイナー**] リンクを選択します。
+
+    ![[Logic app] ブレードの [開発ツール] で [ロジック アプリ デザイナー] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image239.png "[Logic app] ブレード")
+
+5. ロジック アプリ デザイナーの [**テンプレート**] で [**空のロジック アプリ**] を選択します。
+
+    ![ロジック アプリ デザイナーで [空のロジック アプリ] が選択されている](media/2019-03-29-12-56-10.png "ロジック アプリ デザイナー")
+
+6. [**すべて**] タブ、[**Azure キュー**] の順に選択します。
+
+    ![[サービス] セクションで [Azure Service Bus] タイルが選択されている](media/2020-03-18-12-12-10.png "[サービス] セクション")
+
+7. [**Service Bus - キューにメッセージが届く (オートコンプリート)**] の順に選択します。
+
+    ![[すべてのトリガーを検索] セクションの [Service Bus - キューにメッセージが届く (オートコンプリート)]](media/2020-03-18-12-13-24.png "[すべてのトリガーを検索] セクション")
+    ![]()
+
+8. 接続名として「**ContosoQueue**」を指定し、リストから Contoso のストレージ アカウントを選択して [**作成**] をクリックします。
+
+    ![[キューにメッセージが届く] で ContosoQueue という接続名が指定されている。[Service Bus 名前空間] で contosooiyxeonvhew7u が選択されている](media/2020-03-18-12-15-23.png "[キューにメッセージが届く]")
+
+9. [Service Bus ポリシー] リストから **RootManageSharedAccessKey*** を選択し、[**作成**] をクリックします。
+
+    ![RootManageSharedAccessKey が選択されている](media/2020-03-18-12-17-17.png "RootManageSharedAccessKey が選択されている")
+
+10. ドロップダウン メニューで **receiptgenerator** キューを選択し、[**新しい手順**]、[**アクションの追加**] の順にクリックします。
+
+    ![[キューにメッセージが届く] で [キュー名] に「receiptgenerator」が指定されている](media/2020-03-18-12-19-06.png "キュー名")
+
+    >**注**: 必要に応じて [**間隔**] と [**頻度**] を設定し、既定より短い 30 秒間隔などで新規アイテムを確認することもできます。この方法を使用すると、ラボの後の手順で、Service Bus キューに新しいメッセージが送信されてからロジック アプリがトリガーされるまでの遅延を短縮できます。
+
+11. [**+ 新しい手順**] ボタン、[**Azure Functions**] の順に選択します。
+
+    ![[アクションの選択] セクションの [サービス] で [Azure Functions] タイルが選択されている](media/2020-03-18-12-21-44.png "[アクションの選択]")
+
+12. 先ほど作成した **Azure 関数アプリ**を選択します。
+
+    ![[Azure 関数] の [アクション] タブで Azure 関数アプリの ContosoFunctionApp というアクションが 1 つリストに掲載されている](media/2020-03-18-12-22-46.png "Azure 関数")
+
+13. Azure 関数の **ContosoMakePDF** を選択します。
+
+    ![[Azure 関数] の [アクション] タブで Azure 関数の ContosoMakePDF というアクションが 1 つリストに掲載されている](media/2020-03-18-12-23-39.png "Azure 関数")
+
+14. 要求本文に以下のコードを追加します。
+
+    ```json
+    {"Order": pick Content from list }
+    ```
+
+    必ず JSON 形式の文法に従います。誤ってコードの行末に「:」が付けられることがありますが、左側に付けます。以下に例を示します。
+
+    ![ContosoMakePDF で上記の JSON コードが要求本文に追加され、その右には、前の手順から挿入するパラメーターとして Content が選択されている](media/2020-03-18-12-25-29.png "ContosoMakePDF")
+
+15. [**保存**] をクリックしてロジック アプリを保存します。
+
+16. ロジック アプリを実行します。前の手順で PDF 生成テスト用に送信した注文が処理されます。Azure Storage Explorer や Visual Studio Cloud Explorer でストレージ アカウントに移動して receipts コンテナーを開くと、作成された PDF を表示できます。
+
+    ![Azure Storage Explorer の左側にツリー ビューが展開されている (ストレージ アカウント\\contososportsstorage01r\\Blob コンテナー)。Blob コンテナーで receipts が選択されている。右側では ContosoSportsLeague-Store-Receipt-72.pdf が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image252.png "Azure Storage Explorer")
+
+17. ダブルクリックすると購入受領書が表示されます。
+
+18. ロジック アプリ デザイナー画面で [**デザイナー**] ボタンを選択し、データベース更新と処理済みメッセージをキューから削除する処理の 2 つの手順をフローに追加します。デザイナーに戻って [**+ 新しい手順**] を選択します。
+
+    ![デザイナーの [新しい手順] リンクが囲まれている。[新しい手順] の [アクションの追加] タイルが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image254.png "デザイナー")
+
+19. [**SQL Server**] を選択します。
+
+    ![[サービス] セクションで [SQL Server] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image255.png "[サービス] セクション")
+
+20. [**SQL Server - 行の更新 (V2)**] を選択します。
+
+    ![[SQL Server] セクションの [アクション] タブで [SQL Server - 行の更新 (V2)] が選択されている](media/2020-03-18-12-35-07.png "[SQL Server] セクション")
+
+21. 以下の値を入力し、[**作成**] をクリックします。
+
+    - 認証の種類: **SQL Server Authentication**
+
+    - SQL Server 名: 前の手順でコピーした SQL Database フェールオーバー クラスターの読み取り/書き込みリスナー エンドポイントの DNS 名を入力
+
+    - SQL Database 名: `ContosoSportsDB`
+
+    - ユーザー名: `demouser`
+
+    - パスワード: `demo@pass123`
+
+    ![前の手順で定義された設定が [行の更新] セクションに表示されている](media/2020-03-18-12-37-03.png "行の更新")
+
+22. [**サーバー名**] と [**データベース名**] で前の手順で指定した名前を選択し、ドロップダウン リストで **Orders** テーブルを選択し、[**行 ID**] フィールドに `OrderId` という名前を入力します。
+
+    ![[行の更新] セクションの [テーブル名] で Orders が指定されている](media/2020-03-18-12-41-11.png "[行の更新] セクション")
+
+23. [**保存**]、[**コード ビュー**] ボタンの順にクリックします。
+
+24. `Update_row_(V2).inputs` オブジェクトに以下の JSON コードを追加します。
+
+    ```json
+    "body": {
+        "OrderDate": "@{body('ContosoMakePDF')['OrderDate']}",
+        "FirstName": "@{body('ContosoMakePDF')['FirstName']}",
+        "LastName": "@{body('ContosoMakePDF')['LastName']}",
+        "Address": "@{body('ContosoMakePDF')['Address']}",
+        "City": "@{body('ContosoMakePDF')['City']}",
+        "State": "@{body('ContosoMakePDF')['State']}",
+        "PostalCode": "@{body('ContosoMakePDF')['PostalCode']}",
+        "Country": "@{body('ContosoMakePDF')['Country']}",
+        "Phone": "@{body('ContosoMakePDF')['Phone']}",
+        "SMSOptIn": "@{body('ContosoMakePDF')['SMSOptIn']}",
+        "SMSStatus": "@{body('ContosoMakePDF')['SMSStatus']}",
+        "Email": "@{body('ContosoMakePDF')['Email']}",
+        "ReceiptUrl": "@{body('ContosoMakePDF')['ReceiptUrl']}",
+        "Total": "@{body('ContosoMakePDF')['Total']}",
+        "PaymentTransactionId": "@{body('ContosoMakePDF')['PaymentTransactionId']}",
+        "HasBeenShipped": "@{body('ContosoMakePDF')['HasBeenShipped']}"
+    },
+    ```
+
+    追加後の JSON コードは以下のようになります。
+
+    ![編集済みの JSON コード](media/2020-03-18-18-21-47.png "編集済みの JSON コード")
+
+25. `Update_row_(V2)` アクションの `path` 変数を変更し、以下のようにインデックス キーまたは OrderId を追加します。
+
+    ```json
+    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('default'))},@{encodeURIComponent(encodeURIComponent('default'))}/tables/@{encodeURIComponent(encodeURIComponent('[dbo].[Orders]'))}/items/@{encodeURIComponent(encodeURIComponent(body('ContosoMakePDF')['OrderId']))}"
+    ```
+
+26. [**保存**] をクリックしてからデザイナーに戻ります。
+
+27. 更新後のデザイナー ビューは以下のようになります。
+
+    ![[行の更新] セクションに購入フィールドが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image261.png "[行の更新] セクション")
+
+28. 最後に、キューからメッセージを削除する手順を追加します。[**+新しい手順**] をクリックします。[**Service Bus**]、 [**キュー内のメッセージを完了**] アクションの順に選択します。
+
+    ![[Service Bus] の [アクションの選択] セクションで [キュー内のメッセージを完了] が選択されている](media/2020-03-18-12-51-40.png "[アクションの選択] セクション")
+
+29. リストから **receiptgenerator** キューを選択します。
+
+30. トリガーの出力フォーム リストから [**メッセージのロック トークン**]、[**ロック トークン**] の順に選択し、[**保存**] をクリックします。
+
+    ![[メッセージのロック トークン] フィールドで Service Bus のトリガーに [ロック トークン] が選択されている](media/2020-03-18-12-54-28.png "[ロック トークン] が強調表示されている")
+
+31. [**保存**] をクリックします。
+
+32. [ロジック アプリ デザイナーで実行] を選択してから Contoso Sports Web アプリを選択し、アイテムを確認します。
+
+33. コール センター Web サイト アプリを実行し、リスト末尾の [詳細] リンクを選択します。
+    ![[詳細] リンクのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image264.png "[詳細] リンク")
+
+34. データベースが更新されたため、[受領書のダウンロード] リンクが表示されます。
+
+    ![[注文の詳細] ウィンドウで [受領書のダウンロード] リンクが囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image265.png "[注文の詳細] ウィンドウ")
+
+35. [受領書のダウンロード] リンクを選択して受領書を表示します。
+
+36. ロジック アプリに戻って、すべての手順に緑色のチェック マークが付いていることを確認します。黄色の状態アイコンがある場合は、選択して詳細を確認します。
+
+    ![ロジック アプリのすべての手順に緑色のチェック マークが付いている](media/2020-03-18-19-05-39.png "ロジック アプリ")
+
+### タスク 3: Twilio を使用して SMS で注文通知を送信する<a name="タスク-3:-Twilio-を使用して-SMS-で注文通知を送信する"></a>
+
+#### サブタスク 1: Twilio の試用アカウントを構成する<a name="サブタスク-1:-Twilio-の試用アカウントを構成する"></a>
+
+1. Twilio アカウントを所有していない場合は、次の URL から無料アカウントにサインアップします。
+
+    [**https://www.twilio.com/try-twilio**](https://www.twilio.com/try-twilio)
+
+    ![Twilio の無料アカウントのサインアップ Web ページのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image268.png "Twilio アカウントのサインアップ Web ページ")
+
+2. [**All Products & Services**] を選択します。
+
+    ![コンソールの [Home] で [All Products and Services (ellipses)] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image270.png "コンソール")
+
+3. [**Phone Numbers**] を選択します。
+
+    ![コンソールの [Numbers] で [Phone Numbers] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image271.png "コンソール")
+
+4. [**Get Started**] を選択します。
+
+    ![コンソールの [Phone Numbers] で [Get Started] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image272.png "コンソール")
+
+5. [**Get your first Twilio phone number**] ボタンを選択します。
+
+    ![[Get Started with Phone Numbers] プロンプトで [Get your first Twilio phone number] ボタンが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image273.png "[Get Started with Phone Numbers] プロンプト")
+
+6. [**Phone Number**] をメモしておき、[**Your first Twilio Phone Number**] プロンプトで [**Choose this Number**] ボタンを選択し、[**Done**] をクリックします。
+
+    ![[Your first Twilio Phone Number] プロンプトで電話番号がぼかして表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image274.png "[Your first Twilio Phone Number] プロンプト")
+
+7. [**Home**]、[**Settings**] の順に選択します。必要に応じて認証を受け、後で Twilio Connector を構成するときに使用するため [**Account SID**] と [**Auth Token**] をメモしておきます。
+
+    ![コンソール左側の [Home] ボタンと [Settings] メニュー タブが選択されている。右側の [API Credentials] で [Account SID] と [Auth Token] が囲まれている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image275.png "コンソール")
+
+#### サブタスク 2: 新しいロジック アプリを作成する<a name="サブタスク-2:-新しいロジック-アプリを作成する"></a>
+
+1. **SQL Server Management Studio** を開き、**ContosoSportsDB** データベースとして使用する SQL Database に接続します。
+
+    >**注**: データベース サーバー名は以下の手順で検索します。
+    > - Azure Portal で ContosoSportsDB に移動します。
+    > - [概要] で [**データベース接続文字列の表示**] リンクを検索します。
+    > - **Server** パラメーターの値をコピーします。
+    例: Server=tcp:``contososqlserver2019th.database.windows.net,1433``
+
+    ![オブジェクト エクスプローラーで ContosoSportsDBserver1234.database が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image276.png "オブジェクト エクスプローラー")
+
+2. **ContosoSportsDB** データベースで [**プログラマビリティ**] を展開し、[**ストアド プロシージャ**] を右クリックしてから [**新規**]、[**ストアド プロシージャ...**] の順に選択します。
+
+    ![オブジェクト エクスプローラーで ContosoSportsDBserver1234.database\\データベース\\ContosoSportsDB\\プログラマビリティ\\ストアド プロシージャの順に選択されている。[ストアド プロシージャ] の右クリック メニューで [新規]、[ストアド プロシージャ] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image277.png "オブジェクト エクスプローラー")
+
+3. ストアド プロシージャ テンプレートのコードを以下のように変更します。
+
+    ```sql
+    CREATE PROCEDURE [dbo].[GetUnprocessedOrders]
+    AS
+    declare @returnCode int 
+    SELECT @returnCode = COUNT(*) FROM [dbo].[Orders] WHERE PaymentTransactionId is not null AND PaymentTransactionId <> '' AND Phone is not null AND Phone <> '' AND SMSOptIn = '1' AND SMSStatus is null
+    return @returnCode
+
+    GO
+    ```
+
+4. ツールバーで [**実行**] をクリックするか F5 キーを押します。
+
+    ![[実行] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image278.png "[実行] ボタン")
+
+5. コード エディターでストアド プロシージャの SQL スクリプトを削除し、以下のように変更します。
+
+    ```sql
+    CREATE PROCEDURE [dbo].[ProcessOrders]
+    AS
+    SELECT * FROM [dbo].[Orders] WHERE PaymentTransactionId is not null AND PaymentTransactionId <> '' AND Phone is not null AND Phone <> '' AND SMSOptIn = '1' AND SMSStatus is null;
+
+    UPDATE [dbo].[Orders] SET SMSStatus = 'sent' WHERE PaymentTransactionId is not null AND PaymentTransactionId <> '' AND Phone is not null AND Phone <> '' AND SMSOptIn = '1' AND SMSStatus is null;
+    ```
+
+6. ツールバーで [**実行**] をクリックするか F5 キーを押します。
+
+    ![[実行] ボタンのスクリーンショット](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image278.png "[実行] ボタン")
+
+7. Azure 管理ポータルで [**+リソースの作成**] ボタン、[**Web**]、[**ロジック アプリ**] の順に選択します。
+
+    ![Azure Portal 左側の [リソースの作成] メニュー オプションが選択されている。右側では [Web] と [ロジック アプリ] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image279.png "Azure Portal")
+
+8. [**ロジック アプリの作成**] ブレードで [**名前**] の値を割り当て、リソース グループを **contososports** と指定し、ロジック アプリを作成します。
+
+    ![[ロジック アプリの作成] ブレードの [名前] フィールドが contososportssms に設定されている。[リソース グループ] で [既存のものを使用]、contososports が選択されている](media/2020-03-19-11-31-05.png "[ロジック アプリの作成] ブレード")
+
+9. Azure Portal 左側のナビゲーション メニューで [**リソース グループ**] を選択してから **contososports**、先ほど作成した新しいロジック アプリの順に選択します。 
+
+10. [ロジック アプリ] ブレードの [**開発ツール**] メニューで [**ロジック アプリ デザイナー**] を選択します。次に、[**空のロジック アプリ**] テンプレートを選択します。
+
+    ![ロジック アプリ デザイナーで [空のロジック アプリ] タイルが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image282.png "ロジック アプリ デザイナー")
+
+11. **ロジック アプリ デザイナー**で [**スケジュール**] を選択します。次に、[**スケジュール - 繰り返し**] を選択します。
+
+    ![ロジック アプリ デザイナーで [スケジュール] タイルが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image283.png "ロジック アプリ デザイナー")
+
+12. [**頻度**] を [**分**] に設定し、[**間隔**] を 1 に設定します。
+
+    ![[繰り返し] の [頻度] フィールドが [分]、[間隔] フィールドが 1 に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image284.png "[繰り返し] セクション")
+
+13. [**+ 新しい手順**] ボタンを選択します。
+
+14. 検索ボックスに「**SQL Server**」と入力し、[**SQL Server - ストアド プロシージャの実行(V2)**] アクションを選択します。
+
+    ![[アクションの選択] セクションの検索フィールドに「SQL Server」と入力されている。[アクション] タブで [SQL Server - ストアド プロシージャの実行(V2)] が選択されている](media/2020-03-19-11-34-57.png "[アクションの選択] セクション")
+
+15. [**サーバー名**]、[**データベース名**]、[**プロシージャ名**] (`'[dbo].[GetUnprocessedOrders]`) の値を指定します。
+
+    ![[ストアド プロシージャの実行] セクションで [プロシージャ名] が \[dbo\].\[GetUnprocessedOrders\] に指定されている](media/2020-03-19-11-37-08.png "[ストアド プロシージャの実行] セクション")
+
+16. [**新しい手順**] を選択し、**コントロール** オブジェクトを検索して選択します。
+
+    ![ロジック アプリ デザイナーでコントロール オブジェクトが強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image289.png "ボタン")
+
+17. [**新しい手順**] を選択し、[**コントロール - 条件**] オブジェクトを検索して選択します。
+
+    ![ロジック アプリ デザイナーで [コントロール - 条件] オブジェクトが強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image290b.png "ボタン")  
+
+18. [**値の選択**] を選択し、[動的コンテンツ] タイルで **ReturnCode** を選択します。
+
+    ![ロジック アプリ デザイナーの [動的コンテンツ] タイルで [値の選択] ボックス、ReturnCode オブジェクトが強調表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image290c.png "ボタン")
+
+19. **ReturnCode** を指定し、関係を [**より大きい**]、値を **0** に設定します。
+
+    ![[条件] でオブジェクト名が ReturnCode、関係が [より大きい]、値が 0 に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image290.png "[条件] セクション")
+
+20. [**true の場合**] という条件で [**アクションの追加**] リンクを選択します。
+
+    ![[true の場合] で [アクションの追加] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image291.png "[true の場合] セクション")
+
+21. [**SQL Server**]、[**SQL Server - ストアド プロシージャの実行 (V2)**] アクションの順に選択します。
+
+    ![[true の場合] で [SQL Server - ストアド プロシージャの実行 (V2)] が囲まれている](media/2020-03-19-11-39-54.png "[true の場合] セクション")
+
+22. [プロシージャ名] ドロップダウン リストで **ProcessOrders** ストアド プロシージャを選択します。
+
+    ![[true の場合] で [ストアド プロシージャの実行 (V2)] が選択されていて、プロシージャ名に \[dbo\].\[ProcessOrders\] が指定されている](media/2020-03-19-11-40-49.png "[true の場合] セクション")
+
+23. [**アクションの追加**] リンクをクリックします。
+
+    ![[アクションの追加] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image294.png "[アクションの追加] ボタン")
+
+24. 検索ボックスに「**Twilio**」と入力し、[**Twilio - テキスト メッセージを送信 (SMS)**] コネクタを選択します。
+
+    ![[Microsoft が管理している API を表示] の検索ボックスに「Twilio」と入力されていて、その下で [Twilio - テキスト メッセージを送信 (SMS)] が選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image295.png "Microsoft が管理している API を表示")
+
+25. [接続名] を Twilio に設定し、Twilio の**アカウント SID** と**認証トークン**を指定してから [**作成**] ボタンをクリックします。
+
+    ![[Twilio - テキスト メッセージを送信 (SMS)] セクションのフィールドが前の手順で定義した値に設定されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image296.png "Twilio - テキスト メッセージを送信 (SMS)")
+
+26. [**発信元電話番号**] フィールドで、Twilio で使用する電話番号をドロップダウン メニューから選択します。[**発信先電話番号**] の電話番号と [**テキスト**] メッセージの値を指定します。
+
+    ![[テキスト メッセージを送信 (SMS)] の [発信元電話番号] と [発信先電話番号] が囲まれている。[テキスト] フィールドには「Hello, your order has shipped!」というメッセージが入力されている](media/2020-03-19-11-43-06.png "テキスト メッセージを送信 (SMS)")
+
+27. ロジック アプリのツールバーで [**コード ビュー**] ボタンを選択します。
+
+    ![ロジック アプリのツールバーで [コード ビュー] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image298.png "ロジック アプリのツールバー")
+
+28. **Send\_Text\_Message\_(SMS)** アクションを検索し、Twilio アクション本文のプロパティを以下のように変更します。
+
+    ![コード ビューにテキスト メッセージ、発信元電話番号、発信先電話番号が表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image299.png "コード ビュー")
+
+    「Hello」とその後のコンマの間に以下のコードを追加します。
+
+    ```json
+    "@{item()['FirstName']}"
+    ```
+
+    ![コード ビューのテキスト メッセージにコードが追加されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image300.png "コード ビュー")
+
+29. **to** プロパティにアイテムから電話番号をプルします。
+
+    ```json
+    "to": "@{item()['Phone']}"
+    ```
+
+    ![コード行が更新され、電話番号のコードが追加されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image301.png "コード ビュー")
+
+30. **Send\_Text\_Message\_(SMS)** セクションの直前に新規行を挿入し、以下のコードを追加します。
+
+  ```json
+    "forEach_email": {
+      "type": "Foreach",
+      "foreach": "@body('Execute_stored_procedure_(V2)_2')['ResultSets']['Table1']",
+      "actions": {
+  ```
+
+31. **Send\_Text\_Message\_(SMS)** アクションの **runAfter** ブロックを削除します。
+
+    ![runAfter ブロックのコードが表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image302.png "コード ビュー")
+
+32. **Send\_Text\_Message\_(SMS)** アクションの閉じかっこの直後に新規行を挿入し (**必ず**閉じかっこの直後にコンマを挿入します)、以下のコードを追加します。
+
+  ```json
+        },
+        "runAfter": {
+            "Execute_stored_procedure_(V2)_2": [
+                "Succeeded"
+            ]
+        }
+    }
+  ```
+
+33. ツールバーで [**保存**] をクリックし、ロジック アプリを有効化します。
+
+    ![ロジック アプリ デザイナー ツールバーで [保存] ボタンが選択されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image304.png "ロジック アプリ デザイナー ツールバー")
+
+34. 以下のように、**forEach\_email** アクションに **Send\_Text\_Message\_(SMS)** 部分が含まれるように変更し、コードを保存します。
+
+    ![\"forEach\" から \"Execute_stored_procedure\" までのコードがコード ビューで表示されている](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image303.png "コード ビュー")
+
+35. 以下のワークフローに従って、注文が確定するとテキスト メッセージが送信されます。
+
+    ![[繰り返し]、[ストアド プロシージャの実行]、[条件] と続くワークフロー図。[条件] フィールドの内容はオブジェクト名、ReturnCode、関係 = より大きい、値 = 0。ワークフロー図下段の [true の場合] は [ストアド プロシージャの実行 2]、[forEach_email] と続く。[false の場合] には何もない](images/Hands-onlabstep-by-step-Moderncloudappsimages/media/image305.png "ワークフロー図")
+
+## ハンズオン ラボ終了後の作業<a name="ハンズオン-ラボ終了後の作業"></a>
+
+時間: 10 分
+
+### タスク 1: リソースを削除する<a name="タスク-1:-リソースを削除する"></a>
+
+
+1. 以上でハンズオン ラボは終了です。次へ進み、ラボで作成したリソース グループをすべて削除します。これらのリソースはもう不要です。Azure サブスクリプションを整理するためにも、削除することをおすすめします。
+
+ハンズオン ラボ*修了後*、すべての手順を復習してください。
